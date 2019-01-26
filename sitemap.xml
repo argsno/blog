@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     <url>
+      <loc>https://argsno.github.com/2019/dianping-search-deeplearning/</loc>
+      
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
+      
+      
+      
+      
+    </url>
+  
+    <url>
       <loc>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</loc>
       
       <lastmod>2019-01-26T22:25:10+08:00</lastmod>
@@ -53,7 +63,7 @@
     <url>
       <loc>https://argsno.github.com/</loc>
       
-      <lastmod>2019-01-26T22:25:10+08:00</lastmod>
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
       
       
       
@@ -64,6 +74,18 @@
   
     <url>
       <loc>https://argsno.github.com/categories/</loc>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://argsno.github.com/tags/deep-learning/</loc>
+      
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
       
       
       
@@ -97,7 +119,7 @@
     </url>
   
     <url>
-      <loc>https://argsno.github.com/categories/java/</loc>
+      <loc>https://argsno.github.com/tags/java/</loc>
       
       <lastmod>2017-12-07T14:53:43+00:00</lastmod>
       
@@ -109,7 +131,7 @@
     </url>
   
     <url>
-      <loc>https://argsno.github.com/tags/java/</loc>
+      <loc>https://argsno.github.com/categories/java/</loc>
       
       <lastmod>2017-12-07T14:53:43+00:00</lastmod>
       
@@ -135,7 +157,7 @@
     <url>
       <loc>https://argsno.github.com/posts/</loc>
       
-      <lastmod>2019-01-26T22:25:10+08:00</lastmod>
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
       
       
       
@@ -147,7 +169,19 @@
     <url>
       <loc>https://argsno.github.com/tags/</loc>
       
-      <lastmod>2019-01-26T22:25:10+08:00</lastmod>
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
+      
+      
+      
+      <priority>0</priority>
+      
+      
+    </url>
+  
+    <url>
+      <loc>https://argsno.github.com/tags/%E7%BE%8E%E5%9B%A2/</loc>
+      
+      <lastmod>2019-01-26T23:03:32+08:00</lastmod>
       
       
       

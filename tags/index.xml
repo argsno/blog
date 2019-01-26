@@ -6,10 +6,19 @@
     <description>Recent content in Tags on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 26 Jan 2019 22:25:10 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 26 Jan 2019 23:03:32 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://argsno.github.com/tags/deep-learning/</link>
+      <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
+      
+      <guid>https://argsno.github.com/tags/deep-learning/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Elasticsearch</title>
@@ -44,6 +53,15 @@
       <pubDate>Sat, 26 Jan 2019 22:25:10 +0800</pubDate>
       
       <guid>https://argsno.github.com/tags/lucene/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>美团</title>
+      <link>https://argsno.github.com/tags/%E7%BE%8E%E5%9B%A2/</link>
+      <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
+      
+      <guid>https://argsno.github.com/tags/%E7%BE%8E%E5%9B%A2/</guid>
       <description></description>
     </item>
     
