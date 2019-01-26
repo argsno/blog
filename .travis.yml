@@ -2,6 +2,8 @@ language: go
 
 python:
   - master
+go:
+  - master
 
 install:
   - go get github.com/gohugoio/hugo
