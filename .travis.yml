@@ -26,3 +26,10 @@ deploy:
   target_branch: gh-pages
   on:
     branch: master
+
+after_success:
+  - cd ./public
+  - git init
+  - git add --all .
+  - git commit -m "Travis CI Auto Builder"
+  - git push --quiet --force https://$REPO_TOKEN@github.com/argsno/argsno.github.io.git master
