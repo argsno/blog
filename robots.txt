@@ -63,4 +63,4 @@ Disallow: /
 User-agent: ZoominfoBot
 Disallow: /
 
-Sitemap: https://argsno.github.com/sitemap.xml
+Sitemap: https://argsno.github.io/sitemap.xml

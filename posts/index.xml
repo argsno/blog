@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/posts/</link>
+    <link>https://argsno.github.io/posts/</link>
     <description>Recent content in Posts on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 04 Feb 2019 15:15:08 +0800</lastBuildDate>
     
-	<atom:link href="https://argsno.github.com/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://argsno.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>写日志的那些事儿</title>
-      <link>https://argsno.github.com/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</link>
+      <link>https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</link>
       <pubDate>Mon, 04 Feb 2019 15:15:08 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</guid>
+      <guid>https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</guid>
       <description>写日志简介 一般提到写日志，主要有下面几种不同的场景：
  诊断日志：应用打印异常信息，排查问题用，一般是给人看的，输出格式会比较随意，里面可能会有异常堆栈，或者排查问题用的一些文本信息； 数据日志：一般是用来做监控和数据分析的，可以人肉临时分析，也可以给机器分析，要求格式比较固定； 交易日志：一般在日志式文件系统、NoSQL、DB 中使用，一般有 journaling，WAL（write-ahead logging），binlog。这种日志通常都不是给人看的。  EagleEye 写的日志，是数据日志，记录的是中间件的网络调用埋点，或者是应用的业务埋点，它们都通过调用 eagleeye-core 的 EagleEye API 输出。 EagleEye 在写日志方面，有下面几个目标：
  写日志性能要足够好，应避免影响应用主流程； 写日志对系统影响尽量小，在系统压力很大的时候，甚至可以选择放弃输出日志。  在最老的实现里，EagleEye 使用了常见的 log4j 去写日志，在 1.1.3 版的大幅重构之后，就自己直接实现了写日志。 当时想法就是要简化写日志的逻辑，因为 EagleEye 并不是通用的写日志组件，而是写自己的埋点日志。不使用通用的日志框架，主要考虑有几点：
@@ -28,10 +28,10 @@ EagleEye 的 1.</description>
     
     <item>
       <title>大众点评搜索基于知识图谱的深度学习排序实践</title>
-      <link>https://argsno.github.com/2019/dianping-search-deeplearning/</link>
+      <link>https://argsno.github.io/2019/dianping-search-deeplearning/</link>
       <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/dianping-search-deeplearning/</guid>
+      <guid>https://argsno.github.io/2019/dianping-search-deeplearning/</guid>
       <description>1. 引言 挑战与思路 搜索是大众点评App上用户进行信息查找的最大入口，是连接用户和信息的重要纽带。而用户搜索的方式和场景非常多样，并且由于对接业务种类多，流量差异大，为大众点评搜索（下文简称点评搜索）带来了巨大的挑战，具体体现在如下几个方面：
  意图多样：用户查找的信息类型和方式多样。信息类型包括POI、榜单、UGC、攻略、达人等。以找店为例，查找方式包括按距离、按热度、按菜品和按地理位置等多种方式。例如用户按照品牌进行搜索时，大概率是需要寻找距离最近或者常去的某家分店；但用户搜索菜品时，会对菜品推荐人数更加敏感，而距离因素会弱化。 业务多样：不同业务之间，用户的使用频率、选择难度以及业务诉求均不一样。例如家装场景用户使用频次很低，行为非常稀疏，距离因素弱，并且选择周期可能会很长；而美食多为即时消费场景，用户行为数据多，距离敏感。 用户类型多样：不同的用户对价格、距离、口味以及偏好的类目之间差异很大；搜索需要能深度挖掘到用户的各种偏好，实现定制化的“千人千面”的搜索。 LBS的搜索：相比电商和通用搜索，LBS的升维效应极大地增加了搜索场景的复杂性。例如对于旅游用户和常驻地用户来说，前者在搜索美食的时候可能会更加关心当地的知名特色商户，而对于距离相对不敏感。  上述的各项特性，叠加上时间、空间、场景等维度，使得点评搜索面临比通用搜索引擎更加独特的挑战。而解决这些挑战的方法，就需要升级NLP（Natural Language Processing，自然语言处理）技术，进行深度查询理解以及深度评价分析，并依赖知识图谱技术和深度学习技术对搜索架构进行整体升级。在美团NLP中心以及大众点评搜索智能中心两个团队的紧密合作之下，经过短短半年时间，点评搜索核心KPI在高位基础上仍然大幅提升，是过去一年半涨幅的六倍之多，提前半年完成全年目标。
 基于知识图谱的搜索架构重塑 美团NLP中心正在构建全世界最大的餐饮娱乐知识图谱——美团大脑（相关信息请参见《美团大脑：知识图谱的建模方法及其应用》）。它充分挖掘关联各个场景数据，用NLP技术让机器“阅读”用户公开评论，理解用户在菜品、价格、服务、环境等方面的喜好，构建人、店、商品、场景之间的知识关联，从而形成一个“知识大脑”[1]。通过将知识图谱信息加入到搜索各个流程中，我们对点评搜索的整体架构进行了升级重塑，图1为点评搜索基于知识图谱搭建的5层搜索架构。本篇文章是“美团大脑”系列文章第二篇（系列首篇文章请参见《美团餐饮娱乐知识图谱——美团大脑揭秘》)，主要介绍点评搜索5层架构中核心排序层的演变过程，文章主要分为如下3个部分：
@@ -52,10 +52,10 @@ EagleEye 的 1.</description>
     
     <item>
       <title>Elasticsearch面试题解读</title>
-      <link>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Sat, 26 Jan 2019 22:25:10 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
       <description>题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。
 既然是面试题，每个人都会有自己的结合业务场景的答案，没有非常标准的答案。 欢迎大家留言拍砖指正。
 1、elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段 。 面试官：想了解应聘者之前公司接触的ES使用场景、规模，有没有做过比较大规模的索引设计、规划、调优。
@@ -80,10 +80,10 @@ EagleEye 的 1.</description>
     
     <item>
       <title>Java GC</title>
-      <link>https://argsno.github.com/2017/java-gc/</link>
+      <link>https://argsno.github.io/2017/java-gc/</link>
       <pubDate>Thu, 07 Dec 2017 14:53:43 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-gc/</guid>
+      <guid>https://argsno.github.io/2017/java-gc/</guid>
       <description>判断对象是否存活 引用计数法 给对象中添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值减1；任何时刻计数器为0的对象就是还不可能再被使用的。实现简单，判定效率高，但很难解决对象之间相互循环引用的问题。
 可达性分析算法 通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。
 在Java语言中，可作为GC Roots的对象包括下面几种：
@@ -108,10 +108,10 @@ CMS（Concurrent Mark Sweep）收集器 以获取最短回收停顿时间为目�
     
     <item>
       <title>Java ClassLoader</title>
-      <link>https://argsno.github.com/2017/java-classloader/</link>
+      <link>https://argsno.github.io/2017/java-classloader/</link>
       <pubDate>Wed, 06 Dec 2017 11:29:51 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-classloader/</guid>
+      <guid>https://argsno.github.io/2017/java-classloader/</guid>
       <description> 类加载的时机 类的整个生命周期包括：加载（Loading）、验证（Verification）、准备（Preparation）、解析（Resolution）、初始化（Initialization）、使用（Using）和卸载（Unloading）7个阶段。其中验证、准备、解析3个部分统称为连接（Linking）。
 虚拟机规范中严格规定了有且只有5种情况必须立即对类进行“初始化”：
  遇到new、getstatic、putstatic和invokestatic这4条字节码指令时，如果类没有进行过初始化，则需要触发其初始化。常见的Java代码场景：使用new关键字实例化对象的时候、读取或设置一个类的静态字段（被final修饰、已在编译器把结果放入常量池的静态字段除外）的时候，以及调用一个类的静态方法的时候。
@@ -134,10 +134,10 @@ CMS（Concurrent Mark Sweep）收集器 以获取最短回收停顿时间为目�
     
     <item>
       <title>Java 运行时数据区域</title>
-      <link>https://argsno.github.com/2017/java-runtime-data/</link>
+      <link>https://argsno.github.io/2017/java-runtime-data/</link>
       <pubDate>Tue, 05 Dec 2017 10:33:17 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-runtime-data/</guid>
+      <guid>https://argsno.github.io/2017/java-runtime-data/</guid>
       <description>程序计数器 当前线程所执行的字节码的行号指示器，用于记录下一条要执行的指令。每个线程都需要有一个独立的程序计数器，线程私有。 如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Native方法，这个计数器值则为空（Undefined）。
 此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。
 Java虚拟机栈 线程私有，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：每个方法在执行的同时都会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。局部变量表中存放了编译器可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型）和returnAddress类型（指向了一条字节码指令的地址）。其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，在方法运行期间不会改变局部变量表的大小。

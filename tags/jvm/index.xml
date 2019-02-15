@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JVM on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/tags/jvm/</link>
+    <link>https://argsno.github.io/tags/jvm/</link>
     <description>Recent content in JVM on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 06 Dec 2017 11:29:51 +0000</lastBuildDate>
     
-	<atom:link href="https://argsno.github.com/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://argsno.github.io/tags/jvm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java ClassLoader</title>
-      <link>https://argsno.github.com/2017/java-classloader/</link>
+      <link>https://argsno.github.io/2017/java-classloader/</link>
       <pubDate>Wed, 06 Dec 2017 11:29:51 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-classloader/</guid>
+      <guid>https://argsno.github.io/2017/java-classloader/</guid>
       <description> 类加载的时机 类的整个生命周期包括：加载（Loading）、验证（Verification）、准备（Preparation）、解析（Resolution）、初始化（Initialization）、使用（Using）和卸载（Unloading）7个阶段。其中验证、准备、解析3个部分统称为连接（Linking）。
 虚拟机规范中严格规定了有且只有5种情况必须立即对类进行“初始化”：
  遇到new、getstatic、putstatic和invokestatic这4条字节码指令时，如果类没有进行过初始化，则需要触发其初始化。常见的Java代码场景：使用new关键字实例化对象的时候、读取或设置一个类的静态字段（被final修饰、已在编译器把结果放入常量池的静态字段除外）的时候，以及调用一个类的静态方法的时候。
@@ -39,10 +39,10 @@
     
     <item>
       <title>Java 运行时数据区域</title>
-      <link>https://argsno.github.com/2017/java-runtime-data/</link>
+      <link>https://argsno.github.io/2017/java-runtime-data/</link>
       <pubDate>Tue, 05 Dec 2017 10:33:17 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-runtime-data/</guid>
+      <guid>https://argsno.github.io/2017/java-runtime-data/</guid>
       <description>程序计数器 当前线程所执行的字节码的行号指示器，用于记录下一条要执行的指令。每个线程都需要有一个独立的程序计数器，线程私有。 如果线程正在执行的是一个Java方法，这个计数器记录的是正在执行的虚拟机字节码指令的地址；如果正在执行的是Native方法，这个计数器值则为空（Undefined）。
 此内存区域是唯一一个在Java虚拟机规范中没有规定任何OutOfMemoryError情况的区域。
 Java虚拟机栈 线程私有，它的生命周期与线程相同。虚拟机栈描述的是Java方法执行的内存模型：每个方法在执行的同时都会创建一个栈帧用于存储局部变量表、操作数栈、动态链接、方法出口等信息。每一个方法从调用直至执行完成的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。局部变量表中存放了编译器可知的各种基本数据类型（boolean、byte、char、short、int、float、long、double）、对象引用（reference类型）和returnAddress类型（指向了一条字节码指令的地址）。其中64位长度的long和double类型的数据会占用2个局部变量空间（Slot），其余的数据类型只占用1个。局部变量表所需的内存空间在编译期间完成分配，在方法运行期间不会改变局部变量表的大小。

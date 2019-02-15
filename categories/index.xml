@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/categories/</link>
+    <link>https://argsno.github.io/categories/</link>
     <description>Recent content in Categories on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://argsno.github.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://argsno.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Java</title>
-      <link>https://argsno.github.com/categories/java/</link>
+      <link>https://argsno.github.io/categories/java/</link>
       <pubDate>Thu, 07 Dec 2017 14:53:43 +0000</pubDate>
       
-      <guid>https://argsno.github.com/categories/java/</guid>
+      <guid>https://argsno.github.io/categories/java/</guid>
       <description></description>
     </item>
     

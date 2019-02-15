@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ArgsNo&#39;s Notes on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/</link>
+    <link>https://argsno.github.io/</link>
     <description>Recent content in ArgsNo&#39;s Notes on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
@@ -11,10 +11,10 @@
     
     <item>
       <title>写日志的那些事儿</title>
-      <link>https://argsno.github.com/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</link>
+      <link>https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</link>
       <pubDate>Mon, 04 Feb 2019 15:15:08 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</guid>
+      <guid>https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</guid>
       <description>
 
 &lt;h2 id=&#34;写日志简介&#34;&gt;写日志简介&lt;/h2&gt;
@@ -288,10 +288,10 @@ JVM_END
     
     <item>
       <title>大众点评搜索基于知识图谱的深度学习排序实践</title>
-      <link>https://argsno.github.com/2019/dianping-search-deeplearning/</link>
+      <link>https://argsno.github.io/2019/dianping-search-deeplearning/</link>
       <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/dianping-search-deeplearning/</guid>
+      <guid>https://argsno.github.io/2019/dianping-search-deeplearning/</guid>
       <description>
 
 &lt;h2 id=&#34;1-引言&#34;&gt;1. 引言&lt;/h2&gt;
@@ -659,10 +659,10 @@ JVM_END
     
     <item>
       <title>Elasticsearch面试题解读</title>
-      <link>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Sat, 26 Jan 2019 22:25:10 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
       <description>
 
 &lt;h2 id=&#34;题记&#34;&gt;题记&lt;/h2&gt;
@@ -881,10 +881,10 @@ Elasticsearch路还很长，别无他法，唯有死磕！&lt;/p&gt;
     
     <item>
       <title>Java GC</title>
-      <link>https://argsno.github.com/2017/java-gc/</link>
+      <link>https://argsno.github.io/2017/java-gc/</link>
       <pubDate>Thu, 07 Dec 2017 14:53:43 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-gc/</guid>
+      <guid>https://argsno.github.io/2017/java-gc/</guid>
       <description>
 
 &lt;h2 id=&#34;判断对象是否存活&#34;&gt;判断对象是否存活&lt;/h2&gt;
@@ -1007,10 +1007,10 @@ Elasticsearch路还很长，别无他法，唯有死磕！&lt;/p&gt;
     
     <item>
       <title>Java ClassLoader</title>
-      <link>https://argsno.github.com/2017/java-classloader/</link>
+      <link>https://argsno.github.io/2017/java-classloader/</link>
       <pubDate>Wed, 06 Dec 2017 11:29:51 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-classloader/</guid>
+      <guid>https://argsno.github.io/2017/java-classloader/</guid>
       <description>
 
 &lt;h2 id=&#34;类加载的时机&#34;&gt;类加载的时机&lt;/h2&gt;
@@ -1099,10 +1099,10 @@ Elasticsearch路还很长，别无他法，唯有死磕！&lt;/p&gt;
     
     <item>
       <title>Java 运行时数据区域</title>
-      <link>https://argsno.github.com/2017/java-runtime-data/</link>
+      <link>https://argsno.github.io/2017/java-runtime-data/</link>
       <pubDate>Tue, 05 Dec 2017 10:33:17 +0000</pubDate>
       
-      <guid>https://argsno.github.com/2017/java-runtime-data/</guid>
+      <guid>https://argsno.github.io/2017/java-runtime-data/</guid>
       <description>
 
 &lt;h2 id=&#34;程序计数器&#34;&gt;程序计数器&lt;/h2&gt;
@@ -1150,10 +1150,10 @@ Elasticsearch路还很长，别无他法，唯有死磕！&lt;/p&gt;
     
     <item>
       <title></title>
-      <link>https://argsno.github.com/about/</link>
+      <link>https://argsno.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://argsno.github.com/about/</guid>
+      <guid>https://argsno.github.io/about/</guid>
       <description>&lt;p&gt;Hugo is the &lt;strong&gt;world’s fastest framework for building websites&lt;/strong&gt;. It is written in Go.&lt;/p&gt;
 
 &lt;p&gt;It makes use of a variety of open source projects including:&lt;/p&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Lucene on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/tags/lucene/</link>
+    <link>https://argsno.github.io/tags/lucene/</link>
     <description>Recent content in Lucene on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jan 2019 22:25:10 +0800</lastBuildDate>
     
-	<atom:link href="https://argsno.github.com/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://argsno.github.io/tags/lucene/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Elasticsearch面试题解读</title>
-      <link>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
+      <link>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
       <pubDate>Sat, 26 Jan 2019 22:25:10 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
+      <guid>https://argsno.github.io/2019/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
       <description>题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。
 既然是面试题，每个人都会有自己的结合业务场景的答案，没有非常标准的答案。 欢迎大家留言拍砖指正。
 1、elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段 。 面试官：想了解应聘者之前公司接触的ES使用场景、规模，有没有做过比较大规模的索引设计、规划、调优。

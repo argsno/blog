@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>美团 on ArgsNo&#39;s Notes</title>
-    <link>https://argsno.github.com/tags/%E7%BE%8E%E5%9B%A2/</link>
+    <link>https://argsno.github.io/tags/%E7%BE%8E%E5%9B%A2/</link>
     <description>Recent content in 美团 on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 26 Jan 2019 23:03:32 +0800</lastBuildDate>
     
-	<atom:link href="https://argsno.github.com/tags/%E7%BE%8E%E5%9B%A2/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://argsno.github.io/tags/%E7%BE%8E%E5%9B%A2/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>大众点评搜索基于知识图谱的深度学习排序实践</title>
-      <link>https://argsno.github.com/2019/dianping-search-deeplearning/</link>
+      <link>https://argsno.github.io/2019/dianping-search-deeplearning/</link>
       <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
       
-      <guid>https://argsno.github.com/2019/dianping-search-deeplearning/</guid>
+      <guid>https://argsno.github.io/2019/dianping-search-deeplearning/</guid>
       <description>1. 引言 挑战与思路 搜索是大众点评App上用户进行信息查找的最大入口，是连接用户和信息的重要纽带。而用户搜索的方式和场景非常多样，并且由于对接业务种类多，流量差异大，为大众点评搜索（下文简称点评搜索）带来了巨大的挑战，具体体现在如下几个方面：
  意图多样：用户查找的信息类型和方式多样。信息类型包括POI、榜单、UGC、攻略、达人等。以找店为例，查找方式包括按距离、按热度、按菜品和按地理位置等多种方式。例如用户按照品牌进行搜索时，大概率是需要寻找距离最近或者常去的某家分店；但用户搜索菜品时，会对菜品推荐人数更加敏感，而距离因素会弱化。 业务多样：不同业务之间，用户的使用频率、选择难度以及业务诉求均不一样。例如家装场景用户使用频次很低，行为非常稀疏，距离因素弱，并且选择周期可能会很长；而美食多为即时消费场景，用户行为数据多，距离敏感。 用户类型多样：不同的用户对价格、距离、口味以及偏好的类目之间差异很大；搜索需要能深度挖掘到用户的各种偏好，实现定制化的“千人千面”的搜索。 LBS的搜索：相比电商和通用搜索，LBS的升维效应极大地增加了搜索场景的复杂性。例如对于旅游用户和常驻地用户来说，前者在搜索美食的时候可能会更加关心当地的知名特色商户，而对于距离相对不敏感。  上述的各项特性，叠加上时间、空间、场景等维度，使得点评搜索面临比通用搜索引擎更加独特的挑战。而解决这些挑战的方法，就需要升级NLP（Natural Language Processing，自然语言处理）技术，进行深度查询理解以及深度评价分析，并依赖知识图谱技术和深度学习技术对搜索架构进行整体升级。在美团NLP中心以及大众点评搜索智能中心两个团队的紧密合作之下，经过短短半年时间，点评搜索核心KPI在高位基础上仍然大幅提升，是过去一年半涨幅的六倍之多，提前半年完成全年目标。
 基于知识图谱的搜索架构重塑 美团NLP中心正在构建全世界最大的餐饮娱乐知识图谱——美团大脑（相关信息请参见《美团大脑：知识图谱的建模方法及其应用》）。它充分挖掘关联各个场景数据，用NLP技术让机器“阅读”用户公开评论，理解用户在菜品、价格、服务、环境等方面的喜好，构建人、店、商品、场景之间的知识关联，从而形成一个“知识大脑”[1]。通过将知识图谱信息加入到搜索各个流程中，我们对点评搜索的整体架构进行了升级重塑，图1为点评搜索基于知识图谱搭建的5层搜索架构。本篇文章是“美团大脑”系列文章第二篇（系列首篇文章请参见《美团餐饮娱乐知识图谱——美团大脑揭秘》)，主要介绍点评搜索5层架构中核心排序层的演变过程，文章主要分为如下3个部分：
