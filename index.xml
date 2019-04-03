@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ArgsNo&#39;s Notes on ArgsNo&#39;s Notes</title>
@@ -6,8 +5,32 @@
     <description>Recent content in ArgsNo&#39;s Notes on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Feb 2019 15:15:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2019 17:18:41 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>现代化的缓存设计方案</title>
+      <link>https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/</link>
+      <pubDate>Tue, 26 Mar 2019 17:18:41 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/</guid>
+      <description>
+
+&lt;blockquote&gt;
+&lt;p&gt;原文地址：&lt;a href=&#34;http://highscalability.com/blog/2019/2/25/design-of-a-modern-cachepart-deux.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Design Of A Modern Cache—Part Deux&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;在之前的&lt;a href=&#34;http://highscalability.com/blog/2016/1/25/design-of-a-modern-cache.html&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;文章&lt;/a&gt;里，主要介绍了&lt;a href=&#34;https://github.com/ben-manes/caffeine&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Caffeine&lt;/a&gt;使用的缓存算法，特别是其中的驱逐策略以及并发模型。自从上次文章发布之后，我们又对驱逐算法进行了更新并探索了另一种过期的机制。&lt;/p&gt;
+
+&lt;h2 id=&#34;驱逐策略&#34;&gt;驱逐策略&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://dl.acm.org/citation.cfm?id=3149371&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;Window TinyLFU&lt;/a&gt; (W-TinyLFU)&lt;/p&gt;
+
+&lt;h2 id=&#34;过期机制&#34;&gt;过期机制&lt;/h2&gt;
+
+&lt;p&gt;由于之前对于过期更高级的支持尚处于开发中，因此仅仅只是简要的提及。典型的做法要么是使用一个O(lg n)的优先级队列维持有序顺序，要么是将无用的条目保存在缓存中，并依赖于缓存的最大大小策略来最终驱逐出去。Caffeine仅仅使用平摊时间O(1)的算法，&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>写日志的那些事儿</title>

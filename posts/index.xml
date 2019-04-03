@@ -6,10 +6,22 @@
     <description>Recent content in Posts on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 04 Feb 2019 15:15:08 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2019 17:18:41 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>现代化的缓存设计方案</title>
+      <link>https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/</link>
+      <pubDate>Tue, 26 Mar 2019 17:18:41 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/</guid>
+      <description>原文地址：Design Of A Modern Cache—Part Deux
+ 在之前的文章里，主要介绍了Caffeine使用的缓存算法，特别是其中的驱逐策略以及并发模型。自从上次文章发布之后，我们又对驱逐算法进行了更新并探索了另一种过期的机制。
+驱逐策略 Window TinyLFU (W-TinyLFU)
+过期机制 由于之前对于过期更高级的支持尚处于开发中，因此仅仅只是简要的提及。典型的做法要么是使用一个O(lg n)的优先级队列维持有序顺序，要么是将无用的条目保存在缓存中，并依赖于缓存的最大大小策略来最终驱逐出去。Caffeine仅仅使用平摊时间O(1)的算法，</description>
+    </item>
     
     <item>
       <title>写日志的那些事儿</title>
