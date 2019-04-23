@@ -5,8 +5,102 @@
     <description>Recent content in ArgsNo&#39;s Notes on ArgsNo&#39;s Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2019 17:18:41 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Apr 2019 15:17:12 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>树的遍历</title>
+      <link>https://argsno.github.io/2019/tree-traverse/</link>
+      <pubDate>Tue, 23 Apr 2019 15:17:12 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/2019/tree-traverse/</guid>
+      <description>
+
+&lt;p&gt;二叉树的遍历（特别是二查查找树）是数据结构与算法的基础知识，主要的遍历算法有四种，包括了先序遍历、中序遍历、后序遍历，还有层序遍历。不同的遍历算法流程经常会搞混了，特别是面试的时候。这里进行总结一下。&lt;/p&gt;
+
+&lt;h2 id=&#34;前序遍历-pre-order-traversal&#34;&gt;前序遍历(Pre-Order Traversal)&lt;/h2&gt;
+
+&lt;p&gt;指先访问根，然后访问子树的遍历方式。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void pre_order_traversal(TreeNode *root) {
+    // Do Something with root
+    if (root-&amp;gt;lchild != NULL)
+        pre_order_traversal(root-&amp;gt;lchild);
+    if (root-&amp;gt;rchild != NULL)
+        pre_order_traversal(root-&amp;gt;rchild);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;中序遍历-in-order-traversal&#34;&gt;中序遍历(In-Order Traversal)&lt;/h2&gt;
+
+&lt;p&gt;指先访问左（右）子树，然后访问根，最后访问右（左）子树的遍历方式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void in_order_traversal(TreeNode *root) {
+    if (root-&amp;gt;lchild != NULL)
+        in_order_traversal(root-&amp;gt;lchild);
+    // Do Something with root
+    if (root-&amp;gt;rchild != NULL)
+        in_order_traversal(root-&amp;gt;rchild);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;后序遍历-post-order-traversal&#34;&gt;后序遍历(Post-Order Traversal)&lt;/h2&gt;
+
+&lt;p&gt;指先访问子树，然后访问根的遍历方式&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void post_order_traversal(TreeNode *root) {
+    if (root-&amp;gt;lchild != NULL)
+        post_order_traversal(root-&amp;gt;lchild);
+    if (root-&amp;gt;rchild != NULL)
+        post_order_traversal(root-&amp;gt;rchild);
+    // Do Something with root
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;层次遍历&#34;&gt;层次遍历&lt;/h2&gt;
+
+&lt;p&gt;层次遍历又称为二叉树的广度优先遍历，会先访问离根节点最近的节点，一层一层往下遍历。算法借助队列实现。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void Layer_Traver(tree *root) {
+    int head = 0, tail = 0;
+    tree *p[SIZE] = {NULL};
+    tree *tmp;
+    if (root != NULL) {
+        p[head] = root;
+        tail++;
+        // Do Something with p[head]
+    } else
+        return;
+    while (head &amp;lt; tail) {
+        tmp = p[head];
+        // Do Something with p[head]
+        if (tmp-&amp;gt;left != NULL) { // left
+            p[tail] = tmp-&amp;gt;left;
+            tail++;
+        }
+        if (tmp-&amp;gt;right != NULL) { // right
+            p[tail] = tmp-&amp;gt;right;
+            tail++;
+        }
+        head++;
+    }
+    return;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;深度优先遍历&#34;&gt;深度优先遍历&lt;/h2&gt;
+
+&lt;p&gt;先访问根结点，后选择一子结点访问并访问该节点的子结点，持续深入后再依序访问其他子树，可以轻易用递回或栈的方式实现。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;void travel(treenode* nd){
+    for(treenode* nex :　nd-&amp;gt;childs){ // childs 存放指向其每個子結點的指標
+        travel(nex);   
+    }
+    return;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>现代化的缓存设计方案</title>

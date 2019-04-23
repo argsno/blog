@@ -9,9 +9,9 @@
   
   
   
-  <link rel="prev" href="https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" />
-  <link rel="next" href="https://argsno.github.io/2019/tree-traverse/" />
-  <link rel="canonical" href="https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/" />
+  <link rel="prev" href="https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/" />
+  
+  <link rel="canonical" href="https://argsno.github.io/2019/tree-traverse/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           现代化的缓存设计方案 | ArgsNo&#39;s Notes
+           树的遍历 | ArgsNo&#39;s Notes
        
   </title>
-  <meta name="title" content="现代化的缓存设计方案 | ArgsNo&#39;s Notes">
+  <meta name="title" content="树的遍历 | ArgsNo&#39;s Notes">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "https:\/\/argsno.github.io"
     },
     "articleSection" : "posts",
-    "name" : "现代化的缓存设计方案",
-    "headline" : "现代化的缓存设计方案",
-    "description" : "原文地址：Design Of A Modern Cache—Part Deux\n 在之前的文章里，主要介绍了Caffeine使用的缓存算法，特别是其中的驱逐策略以及并发模型。自从上次文章发布之后，我们又对驱逐算法进行了更新并探索了另一种过期的机制。\n驱逐策略 Window TinyLFU (W-TinyLFU)\n过期机制 由于之前对于过期更高级的支持尚处于开发中，因此仅仅只是简要的提及。典型的做法要么是使用一个O(lg n)的优先级队列维持有序顺序，要么是将无用的条目保存在缓存中，并依赖于缓存的最大大小策略来最终驱逐出去。Caffeine仅仅使用平摊时间O(1)的算法，",
+    "name" : "树的遍历",
+    "headline" : "树的遍历",
+    "description" : "二叉树的遍历（特别是二查查找树）是数据结构与算法的基础知识，主要的遍历算法有四种，包括了先序遍历、中序遍历、后序遍历，还有层序遍历。不同的遍历算法流程经常会搞混了，特别是面试的时候。这里进行总结一下。\n前序遍历(Pre-Order Traversal) 指先访问根，然后访问子树的遍历方式。\nvoid pre_order_traversal(TreeNode *root) { \/\/ Do Something with root if (root-\x26gt;lchild != NULL) pre_order_traversal(root-\x26gt;lchild); if (root-\x26gt;rchild != NULL) pre_order_traversal(root-\x26gt;rchild); }  中序遍历(In-Order Traversal) 指先访问左（右）子树，然后访问根，最后访问右（左）子树的遍历方式\nvoid in_order_traversal(TreeNode *root) { if (root-\x26gt;lchild != NULL) in_order_traversal(root-\x26gt;lchild); \/\/ Do Something with root if (root-\x26gt;rchild != NULL) in_order_traversal(root-\x26gt;rchild); }  后序遍历(Post-Order Traversal) 指先访问子树，然后访问根的遍历方式\nvoid post_order_traversal(TreeNode *root) { if (root-\x26gt;lchild != NULL) post_order_traversal(root-\x26gt;lchild); if (root-\x26gt;rchild != NULL) post_order_traversal(root-\x26gt;rchild); \/\/ Do Something with root }  层次遍历 层次遍历又称为二叉树的广度优先遍历，会先访问离根节点最近的节点，一层一层往下遍历。算法借助队列实现。",
     "inLanguage" : "en-us",
     "author" : "Andrew.Wong",
     "creator" : "Andrew.Wong",
@@ -54,10 +54,10 @@
     "accountablePerson" : "Andrew.Wong",
     "copyrightHolder" : "Andrew.Wong",
     "copyrightYear" : "2019",
-    "datePublished": "2019-03-26 17:18:41 \x2b0800 \x2b0800",
-    "dateModified" : "2019-03-26 17:18:41 \x2b0800 \x2b0800",
-    "url" : "https:\/\/argsno.github.io\/2019\/design-of-a-modern-cachepart-deux\/",
-    "wordCount" : "14",
+    "datePublished": "2019-04-23 15:17:12 \x2b0800 \x2b0800",
+    "dateModified" : "2019-04-23 15:17:12 \x2b0800 \x2b0800",
+    "url" : "https:\/\/argsno.github.io\/2019\/tree-traverse\/",
+    "wordCount" : "163",
     "keywords" : [  "ArgsNo\x27s Notes"]
 }
 </script>
@@ -116,11 +116,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">现代化的缓存设计方案</h1>
+        <h1 class="post-title" itemprop="name headline">树的遍历</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="https://argsno.github.io" rel="author">Andrew.Wong</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-03-26 itemprop="datePublished">March 26, 2019</time>
+                on <time datetime=2019-04-23 itemprop="datePublished">April 23, 2019</time>
                 </span>
                 in
                 
@@ -144,19 +144,89 @@
 
           
 
-<blockquote>
-<p>原文地址：<a href="http://highscalability.com/blog/2019/2/25/design-of-a-modern-cachepart-deux.html" rel="nofollow noreferrer" target="_blank">Design Of A Modern Cache—Part Deux</a></p>
-</blockquote>
+<p>二叉树的遍历（特别是二查查找树）是数据结构与算法的基础知识，主要的遍历算法有四种，包括了先序遍历、中序遍历、后序遍历，还有层序遍历。不同的遍历算法流程经常会搞混了，特别是面试的时候。这里进行总结一下。</p>
 
-<p>在之前的<a href="http://highscalability.com/blog/2016/1/25/design-of-a-modern-cache.html" rel="nofollow noreferrer" target="_blank">文章</a>里，主要介绍了<a href="https://github.com/ben-manes/caffeine" rel="nofollow noreferrer" target="_blank">Caffeine</a>使用的缓存算法，特别是其中的驱逐策略以及并发模型。自从上次文章发布之后，我们又对驱逐算法进行了更新并探索了另一种过期的机制。</p>
+<h2 id="前序遍历-pre-order-traversal">前序遍历(Pre-Order Traversal)</h2>
 
-<h2 id="驱逐策略">驱逐策略</h2>
+<p>指先访问根，然后访问子树的遍历方式。</p>
 
-<p><a href="https://dl.acm.org/citation.cfm?id=3149371" rel="nofollow noreferrer" target="_blank">Window TinyLFU</a> (W-TinyLFU)</p>
+<pre><code class="language-c">void pre_order_traversal(TreeNode *root) {
+    // Do Something with root
+    if (root-&gt;lchild != NULL)
+        pre_order_traversal(root-&gt;lchild);
+    if (root-&gt;rchild != NULL)
+        pre_order_traversal(root-&gt;rchild);
+}
+</code></pre>
 
-<h2 id="过期机制">过期机制</h2>
+<h2 id="中序遍历-in-order-traversal">中序遍历(In-Order Traversal)</h2>
 
-<p>由于之前对于过期更高级的支持尚处于开发中，因此仅仅只是简要的提及。典型的做法要么是使用一个O(lg n)的优先级队列维持有序顺序，要么是将无用的条目保存在缓存中，并依赖于缓存的最大大小策略来最终驱逐出去。Caffeine仅仅使用平摊时间O(1)的算法，</p>
+<p>指先访问左（右）子树，然后访问根，最后访问右（左）子树的遍历方式</p>
+
+<pre><code class="language-c">void in_order_traversal(TreeNode *root) {
+    if (root-&gt;lchild != NULL)
+        in_order_traversal(root-&gt;lchild);
+    // Do Something with root
+    if (root-&gt;rchild != NULL)
+        in_order_traversal(root-&gt;rchild);
+}
+</code></pre>
+
+<h2 id="后序遍历-post-order-traversal">后序遍历(Post-Order Traversal)</h2>
+
+<p>指先访问子树，然后访问根的遍历方式</p>
+
+<pre><code class="language-c">void post_order_traversal(TreeNode *root) {
+    if (root-&gt;lchild != NULL)
+        post_order_traversal(root-&gt;lchild);
+    if (root-&gt;rchild != NULL)
+        post_order_traversal(root-&gt;rchild);
+    // Do Something with root
+}
+</code></pre>
+
+<h2 id="层次遍历">层次遍历</h2>
+
+<p>层次遍历又称为二叉树的广度优先遍历，会先访问离根节点最近的节点，一层一层往下遍历。算法借助队列实现。</p>
+
+<pre><code class="language-c">void Layer_Traver(tree *root) {
+    int head = 0, tail = 0;
+    tree *p[SIZE] = {NULL};
+    tree *tmp;
+    if (root != NULL) {
+        p[head] = root;
+        tail++;
+        // Do Something with p[head]
+    } else
+        return;
+    while (head &lt; tail) {
+        tmp = p[head];
+        // Do Something with p[head]
+        if (tmp-&gt;left != NULL) { // left
+            p[tail] = tmp-&gt;left;
+            tail++;
+        }
+        if (tmp-&gt;right != NULL) { // right
+            p[tail] = tmp-&gt;right;
+            tail++;
+        }
+        head++;
+    }
+    return;
+}
+</code></pre>
+
+<h2 id="深度优先遍历">深度优先遍历</h2>
+
+<p>先访问根结点，后选择一子结点访问并访问该节点的子结点，持续深入后再依序访问其他子树，可以轻易用递回或栈的方式实现。</p>
+
+<pre><code class="language-c">void travel(treenode* nd){
+    for(treenode* nex :　nd-&gt;childs){ // childs 存放指向其每個子結點的指標
+        travel(nex);   
+    }
+    return;
+}
+</code></pre>
 
     </div>
 
@@ -171,7 +241,7 @@
              
             <p class="copyright-item">
                     <span>Link:</span>
-                    <a href=https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/>https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/</span>
+                    <a href=https://argsno.github.io/2019/tree-traverse/>https://argsno.github.io/2019/tree-traverse/</span>
             </p>
             
              
@@ -192,10 +262,8 @@
 
     <div class="post-nav">
         
-        <a href="https://argsno.github.io/2019/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" class="prev" rel="prev" title="写日志的那些事儿"><i class="iconfont icon-left"></i>&nbsp;写日志的那些事儿</a>
+        <a href="https://argsno.github.io/2019/design-of-a-modern-cachepart-deux/" class="prev" rel="prev" title="现代化的缓存设计方案"><i class="iconfont icon-left"></i>&nbsp;现代化的缓存设计方案</a>
          
-        
-        <a href="https://argsno.github.io/2019/tree-traverse/" class="next" rel="next" title="树的遍历">树的遍历&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
