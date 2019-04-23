@@ -1,7 +1,7 @@
 ---
 title: "现代化的缓存设计方案"
 date: 2019-03-26T17:18:41+08:00
-draft: false
+draft: true
 ---
 
 > 原文地址：[Design Of A Modern Cache—Part Deux](http://highscalability.com/blog/2019/2/25/design-of-a-modern-cachepart-deux.html)
