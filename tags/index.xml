@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on ArgsNo&#39;s Notes</title>
+    <title>Tags on argsno</title>
     <link>https://argsno.github.io/tags/</link>
-    <description>Recent content in Tags on ArgsNo&#39;s Notes</description>
+    <description>Recent content in Tags on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>zh-cn</language>
     <lastBuildDate>Sat, 26 Jan 2019 23:03:32 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/tags/index.xml" rel="self" type="application/rss+xml" />

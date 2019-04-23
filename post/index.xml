@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on argsno</title>
+    <link>https://argsno.github.io/post/</link>
+    <description>Recent content in Posts on argsno</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 23 Apr 2019 15:17:12 +0800</lastBuildDate>
+    
+	<atom:link href="https://argsno.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>树的遍历</title>
+      <link>https://argsno.github.io/post/tree-traverse/</link>
+      <pubDate>Tue, 23 Apr 2019 15:17:12 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/tree-traverse/</guid>
+      <description>二叉树的遍历（特别是二查查找树）是数据结构与算法的基础知识，主要的遍历算法有四种，包括了先序遍历、中序遍历、后序遍历，还有层序遍历。不同的遍</description>
+    </item>
+    
+    <item>
+      <title>现代化的缓存设计方案</title>
+      <link>https://argsno.github.io/post/design-of-a-modern-cachepart-deux/</link>
+      <pubDate>Tue, 26 Mar 2019 17:18:41 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/design-of-a-modern-cachepart-deux/</guid>
+      <description>原文地址：Design Of A Modern Cache—Part Deux 在之前的文章里，主要介绍了Caffeine使用的缓存算法，特别是其中的驱逐策略以及并发模型</description>
+    </item>
+    
+    <item>
+      <title>写日志的那些事儿</title>
+      <link>https://argsno.github.io/post/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</link>
+      <pubDate>Mon, 04 Feb 2019 15:15:08 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/</guid>
+      <description>写日志简介 一般提到写日志，主要有下面几种不同的场景： 诊断日志：应用打印异常信息，排查问题用，一般是给人看的，输出格式会比较随意，里面可能会有</description>
+    </item>
+    
+    <item>
+      <title>大众点评搜索基于知识图谱的深度学习排序实践</title>
+      <link>https://argsno.github.io/post/dianping-search-deeplearning/</link>
+      <pubDate>Sat, 26 Jan 2019 23:03:32 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/dianping-search-deeplearning/</guid>
+      <description>1. 引言 挑战与思路 搜索是大众点评App上用户进行信息查找的最大入口，是连接用户和信息的重要纽带。而用户搜索的方式和场景非常多样，并且由于对接业</description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch面试题解读</title>
+      <link>https://argsno.github.io/post/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</link>
+      <pubDate>Sat, 26 Jan 2019 22:25:10 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/</guid>
+      <description>题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。 既然是面</description>
+    </item>
+    
+    <item>
+      <title>Java GC</title>
+      <link>https://argsno.github.io/post/java-gc/</link>
+      <pubDate>Thu, 07 Dec 2017 14:53:43 +0000</pubDate>
+      
+      <guid>https://argsno.github.io/post/java-gc/</guid>
+      <description>判断对象是否存活 引用计数法 给对象中添加一个引用计数器，每当有一个地方引用它时，计数器值加1；当引用失效时，计数器值减1；任何时刻计数器为0的</description>
+    </item>
+    
+    <item>
+      <title>Java ClassLoader</title>
+      <link>https://argsno.github.io/post/java-classloader/</link>
+      <pubDate>Wed, 06 Dec 2017 11:29:51 +0000</pubDate>
+      
+      <guid>https://argsno.github.io/post/java-classloader/</guid>
+      <description>类加载的时机 类的整个生命周期包括：加载（Loading）、验证（Verification）、准备（Preparation）、解析（Resol</description>
+    </item>
+    
+    <item>
+      <title>Java 运行时数据区域</title>
+      <link>https://argsno.github.io/post/java-runtime-data/</link>
+      <pubDate>Tue, 05 Dec 2017 10:33:17 +0000</pubDate>
+      
+      <guid>https://argsno.github.io/post/java-runtime-data/</guid>
+      <description>程序计数器 当前线程所执行的字节码的行号指示器，用于记录下一条要执行的指令。每个线程都需要有一个独立的程序计数器，线程私有。 如果线程正在执行的</description>
+    </item>
+    
+  </channel>
+</rss>

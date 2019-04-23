@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Elasticsearch面试题解读 - argsno</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="argsno" /><meta name="description" content="题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。 既然是面" /><meta name="keywords" content="argsno, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.0-DEV with even 4.0.0" />
+
+
+<link rel="canonical" href="https://argsno.github.io/post/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Elasticsearch面试题解读" />
+<meta property="og:description" content="题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。 既然是面" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://argsno.github.io/post/elasticsearch%E9%9D%A2%E8%AF%95%E9%A2%98%E8%A7%A3%E8%AF%BB/" />
+<meta property="article:published_time" content="2019-01-26T22:25:10&#43;08:00"/>
+<meta property="article:modified_time" content="2019-01-26T22:25:10&#43;08:00"/>
+
+<meta itemprop="name" content="Elasticsearch面试题解读">
+<meta itemprop="description" content="题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。 既然是面">
+
+
+<meta itemprop="datePublished" content="2019-01-26T22:25:10&#43;08:00" />
+<meta itemprop="dateModified" content="2019-01-26T22:25:10&#43;08:00" />
+<meta itemprop="wordCount" content="3186">
+
+
+
+<meta itemprop="keywords" content="Elasticsearch,Lucene," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Elasticsearch面试题解读"/>
+<meta name="twitter:description" content="题记 git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。 既然是面"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Argsno</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Argsno</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Elasticsearch面试题解读</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-01-26 </span>
+        
+          <span class="more-meta"> 约 3186 字 </span>
+          <span class="more-meta"> 预计阅读 7 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#题记">题记</a></li>
+<li><a href="#1-elasticsearch了解多少-说说你们公司es的集群架构-索引数据大小-分片有多少-以及一些调优手段">1、elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段 。</a></li>
+<li><a href="#2-elasticsearch的倒排索引是什么">2、elasticsearch的倒排索引是什么？</a></li>
+<li><a href="#3-elasticsearch-索引数据多了怎么办-如何调优-部署">3、elasticsearch 索引数据多了怎么办，如何调优，部署？</a>
+<ul>
+<li><a href="#3-1-动态索引层面">3.1 动态索引层面</a></li>
+<li><a href="#3-2-存储层面">3.2 存储层面</a></li>
+<li><a href="#3-3-部署层面">3.3 部署层面</a></li>
+</ul></li>
+<li><a href="#4-elasticsearch是如何实现master选举的">4、elasticsearch是如何实现master选举的？</a></li>
+<li><a href="#5-详细描述一下elasticsearch索引文档的过程">5、详细描述一下Elasticsearch索引文档的过程？</a></li>
+<li><a href="#6-详细描述一下elasticsearch搜索的过程">6、详细描述一下Elasticsearch搜索的过程？</a></li>
+<li><a href="#7-elasticsearch在部署时-对linux的设置有哪些优化方法">7、Elasticsearch在部署时，对Linux的设置有哪些优化方法？</a></li>
+<li><a href="#8-lucence内部结构是什么">8、lucence内部结构是什么？</a></li>
+<li><a href="#小结">小结</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="题记">题记</h2>
+
+<p>git上发现了网友总结的Elasticsearch BAT大厂面试题。只有题目，部分有答案，但不全。 正好抽出一些时间一起梳理一下。</p>
+
+<p>既然是面试题，每个人都会有自己的结合业务场景的答案，没有非常标准的答案。
+欢迎大家留言拍砖指正。</p>
+
+<h2 id="1-elasticsearch了解多少-说说你们公司es的集群架构-索引数据大小-分片有多少-以及一些调优手段">1、elasticsearch了解多少，说说你们公司es的集群架构，索引数据大小，分片有多少，以及一些调优手段 。</h2>
+
+<p><strong>面试官</strong>：想了解应聘者之前公司接触的ES使用场景、规模，有没有做过比较大规模的索引设计、规划、调优。</p>
+
+<p><strong>解答</strong>：
+如实结合自己的实践场景回答即可。
+比如：ES集群架构13个节点，索引根据通道不同共20+索引，根据日期，每日递增20+，索引：10分片，每日递增1亿+数据，
+每个通道每天索引大小控制：150GB之内。</p>
+
+<p>仅索引层面调优手段：</p>
+
+<p>1.1、设计阶段调优</p>
+
+<ol>
+<li>根据业务增量需求，采取基于日期模板创建索引，通过roll over API滚动索引；</li>
+<li>使用别名进行索引管理；</li>
+<li>每天凌晨定时对索引做force_merge操作，以释放空间；</li>
+<li>采取冷热分离机制，热数据存储到SSD，提高检索效率；冷数据定期进行shrink操作，以缩减存储；</li>
+<li>采取curator进行索引的生命周期管理；</li>
+<li>仅针对需要分词的字段，合理的设置分词器；</li>
+<li>Mapping阶段充分结合各个字段的属性，是否需要检索、是否需要存储等。 …</li>
+</ol>
+
+<p>1.2、写入调优</p>
+
+<ol>
+<li>写入前副本数设置为0；</li>
+<li>写入前关闭refresh_interval设置为-1，禁用刷新机制；</li>
+<li>写入过程中：采取bulk批量写入；</li>
+<li>写入后恢复副本数和刷新间隔；</li>
+<li>尽量使用自动生成的id。</li>
+</ol>
+
+<p>1.3、查询调优</p>
+
+<ol>
+<li>禁用wildcard；</li>
+<li>禁用批量terms（成百上千的场景）；</li>
+<li>充分利用倒排索引机制，能keyword类型尽量keyword；</li>
+<li>数据量大时候，可以先基于时间敲定索引再检索；</li>
+<li>设置合理的路由机制。</li>
+</ol>
+
+<p>1.4、其他调优</p>
+
+<p>部署调优，业务调优等。</p>
+
+<p>上面的提及一部分，面试者就基本对你之前的实践或者运维经验有所评估了。</p>
+
+<h2 id="2-elasticsearch的倒排索引是什么">2、elasticsearch的倒排索引是什么？</h2>
+
+<p><strong>面试官</strong>：想了解你对基础概念的认知。</p>
+
+<p><strong>解答</strong>：通俗解释一下就可以。</p>
+
+<p>传统的我们的检索是通过文章，逐个遍历找到对应关键词的位置。
+而倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。
+有了倒排索引，就能实现o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。</p>
+
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79ly1fzkd4imut4j305d058mx7.jpg" alt="img" /></p>
+
+<p>学术的解答方式：</p>
+
+<p>倒排索引，相反于一篇文章包含了哪些词，它从词出发，记载了这个词在哪些文档中出现过，由两部分组成——词典和倒排表。</p>
+
+<p>加分项：倒排索引的底层实现是基于：FST（Finite State Transducer）数据结构。
+lucene从4+版本后开始大量使用的数据结构是FST。FST有两个优点：</p>
+
+<ol>
+<li>空间占用小。通过对词典中单词前缀和后缀的重复利用，压缩了存储空间；</li>
+<li>查询速度快。O(len(str))的查询时间复杂度。</li>
+</ol>
+
+<h2 id="3-elasticsearch-索引数据多了怎么办-如何调优-部署">3、elasticsearch 索引数据多了怎么办，如何调优，部署？</h2>
+
+<p><strong>面试官</strong>：想了解大数据量的运维能力。</p>
+
+<p><strong>解答</strong>：索引数据的规划，应在前期做好规划，正所谓“设计先行，编码在后”，这样才能有效的避免突如其来的数据激增导致集群处理能力不足引发的线上客户检索或者其他业务受到影响。
+如何调优，正如问题1所说，这里细化一下：</p>
+
+<h3 id="3-1-动态索引层面">3.1 动态索引层面</h3>
+
+<p>基于<code>模板+时间+rollover api滚动</code>创建索引，举例：设计阶段定义：blog索引的模板格式为：blog_index_时间戳的形式，每天递增数据。</p>
+
+<p>这样做的好处：不至于数据量激增导致单个索引数据量非常大，接近于上线2的32次幂-1，索引存储达到了TB+甚至更大。</p>
+
+<p>一旦单个索引很大，存储等各种风险也随之而来，所以要提前考虑+及早避免。</p>
+
+<h3 id="3-2-存储层面">3.2 存储层面</h3>
+
+<p><code>冷热数据分离存储</code>，热数据（比如最近3天或者一周的数据），其余为冷数据。
+对于冷数据不会再写入新数据，可以考虑定期force_merge加shrink压缩操作，节省存储空间和检索效率。</p>
+
+<h3 id="3-3-部署层面">3.3 部署层面</h3>
+
+<p>一旦之前没有规划，这里就属于应急策略。
+结合ES自身的支持动态扩展的特点，动态新增机器的方式可以缓解集群压力，注意：如果之前主节点等规划合理，不需要重启集群也能完成动态新增的。</p>
+
+<h2 id="4-elasticsearch是如何实现master选举的">4、elasticsearch是如何实现master选举的？</h2>
+
+<p><strong>面试官</strong>：想了解ES集群的底层原理，不再只关注业务层面了。</p>
+
+<p><strong>解答</strong>：
+前置前提：</p>
+
+<ol>
+<li>只有候选主节点（master：true）的节点才能成为主节点。</li>
+<li>最小主节点数（min_master_nodes）的目的是防止脑裂。
+这个我看了各种网上分析的版本和源码分析的书籍，云里雾里。
+核对了一下代码，核心入口为findMaster，选择主节点成功返回对应Master，否则返回null。选举流程大致描述如下：</li>
+</ol>
+
+<p>第一步：确认候选主节点数达标，elasticsearch.yml设置的值discovery.zen.minimum_master_nodes；
+第二步：比较：先判定是否具备master资格，具备候选主节点资格的优先返回；若两节点都为候选主节点，则id小的值会主节点。注意这里的id为string类型。
+题外话：获取节点id的方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-curl" data-lang="curl"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-curl" data-lang="curl">GET /_cat/nodes?v&amp;h=ip,port,heapPercent,heapMax,id,name
+ip        port heapPercent heapMax id   name
+127.0.0.1 9300          39   1.9gb Hk9w Hk9wFwU</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="5-详细描述一下elasticsearch索引文档的过程">5、详细描述一下Elasticsearch索引文档的过程？</h2>
+
+<p><strong>面试官</strong>：想了解ES的底层原理，不再只关注业务层面了。</p>
+
+<p><strong>解答</strong>：
+这里的索引文档应该理解为文档写入ES，创建索引的过程。
+文档写入包含：单文档写入和批量bulk写入，这里只解释一下：单文档写入流程。</p>
+
+<p>记住官方文档中的这个图。</p>
+
+<p>第一步：客户写集群某节点写入数据，发送请求。（如果没有指定路由/协调节点，请求的节点扮演路由节点的角色。）</p>
+
+<p>第二步：节点1接受到请求后，使用文档_id来确定文档属于分片0。请求会被转到另外的节点，假定节点3。因此分片0的主分片分配到节点3上。</p>
+
+<p>第三步：节点3在主分片上执行写操作，如果成功，则将请求并行转发到节点1和节点2的副本分片上，等待结果返回。所有的副本分片都报告成功，节点3将向协调节点（节点1）报告成功，节点1向请求客户端报告写入成功。</p>
+
+<p>如果面试官再问：第二步中的文档获取分片的过程？
+回答：借助路由算法获取，路由算法就是根据路由和文档id计算目标的分片id的过程。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-math" data-lang="math"><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-math" data-lang="math">shard = hash(_routing) % (num_of_primary_shards)</code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="6-详细描述一下elasticsearch搜索的过程">6、详细描述一下Elasticsearch搜索的过程？</h2>
+
+<p><strong>面试官</strong>：想了解ES搜索的底层原理，不再只关注业务层面了。</p>
+
+<p><strong>解答</strong>：
+搜索拆解为“query then fetch” 两个阶段。
+query阶段的目的：定位到位置，但不取。
+步骤拆解如下：</p>
+
+<ol>
+<li>假设一个索引数据有5主+1副本 共10分片，一次请求会命中（主或者副本分片中）的一个。</li>
+<li>每个分片在本地进行查询，结果返回到本地有序的优先队列中。</li>
+<li>第2步骤的结果发送到协调节点，协调节点产生一个全局的排序列表。
+fetch阶段的目的：取数据。
+路由节点获取所有文档，返回给客户端。</li>
+</ol>
+
+<h2 id="7-elasticsearch在部署时-对linux的设置有哪些优化方法">7、Elasticsearch在部署时，对Linux的设置有哪些优化方法？</h2>
+
+<p><strong>面试官</strong>：想了解对ES集群的运维能力。
+<strong>解答</strong>：</p>
+
+<ol>
+<li>关闭缓存swap;</li>
+<li>堆内存设置为：Min（节点内存/2, 32GB）;</li>
+<li>设置最大文件句柄数；</li>
+<li>线程池+队列大小根据业务需要做调整；</li>
+<li>磁盘存储raid方式——存储有条件使用RAID10，增加单节点性能以及避免单节点存储故障。</li>
+</ol>
+
+<h2 id="8-lucence内部结构是什么">8、lucence内部结构是什么？</h2>
+
+<p><strong>面试官</strong>：想了解你的知识面的广度和深度。</p>
+
+<p><strong>解答</strong>：
+<img src="https://ws3.sinaimg.cn/large/006tNc79ly1fzkd69t7wvj30ft0d9dic.jpg" alt="" /></p>
+
+<p>Lucene是有索引和搜索的两个过程，包含索引创建，索引，搜索三个要点。可以基于这个脉络展开一些。</p>
+
+<h2 id="小结">小结</h2>
+
+<p>看到题目后，感觉熟悉又陌生。真正要在面试的时候讲出来，需要下一番功夫深入理解。
+为了求证回答的相对准确性，我翻看了源码、官方文档和部分有深度的博文。
+Elasticsearch路还很长，别无他法，唯有死磕！</p>
+
+<p>题目来源：</p>
+
+<ul>
+<li><a href="https://github.com/randian666/algorithm-study#搜索">https://github.com/randian666/algorithm-study#搜索</a></li>
+<li><a href="https://www.cnblogs.com/luckcs/articles/7052932.html">https://www.cnblogs.com/luckcs/articles/7052932.html</a></li>
+</ul>
+
+<p>核心参考：</p>
+
+<ol>
+<li><a href="http://www.cnblogs.com/LBSer/p/4119841.html">http://www.cnblogs.com/LBSer/p/4119841.html</a></li>
+<li><a href="https://blog.csdn.net/njpjsoftdev/article/details/54015485">https://blog.csdn.net/njpjsoftdev/article/details/54015485</a></li>
+<li><a href="https://elasticsearch.cn/book/elasticsearch_definitive_guide_2.x/distrib-write.html">https://elasticsearch.cn/book/elasticsearch_definitive_guide_2.x/distrib-write.html</a></li>
+<li><a href="http://www.cnblogs.com/forfuture1978/archive/2010/05/19/1738806.html">http://www.cnblogs.com/forfuture1978/archive/2010/05/19/1738806.html</a></li>
+<li>《Elasticsearch源码解析和优化实践》</li>
+</ol>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">argsno</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-01-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/elasticsearch/">Elasticsearch</a>
+          <a href="/tags/lucene/">Lucene</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/dianping-search-deeplearning/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">大众点评搜索基于知识图谱的深度学习排序实践</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        <a class="next" href="/post/java-gc/">
+            <span class="next-text nav-default">Java GC</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:argsno@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://argsno.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">argsno</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>
