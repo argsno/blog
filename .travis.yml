@@ -3,7 +3,7 @@ language: go
 python:
   - master
 go:
-  - master
+  - 1.12
 
 install:
   - go get github.com/gohugoio/hugo
