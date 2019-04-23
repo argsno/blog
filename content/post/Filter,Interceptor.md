@@ -131,7 +131,7 @@ HandlerInterceptor 接口中定义了三个方法，我们就是通过这三个�
 - afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex) 方法，该方法也是需要当前对应的Interceptor的preHandle 方法的返回值为true时才会执行。顾名思义，该方法将在整个请求结束之后，也就是在DispatcherServlet渲染了对应的视图之后执行。这个方法的主要作用是用于进行资源清理工作的。
 
 ### 实现
-Interceptor功能的实现主要是在Spring Mvc的DispatcherServelt.doDispatch方法中, 让我们来看看源码
+Interceptor功能的实现主要是在Spring Mvc的DispatcherServlet.doDispatch方法中, 让我们来看看源码
 
 ```java
 // Interceptor的源码
