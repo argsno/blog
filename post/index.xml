@@ -6,10 +6,19 @@
     <description>Recent content in Posts on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 23 Apr 2019 15:41:00 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 24 Apr 2019 19:34:21 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring MVC - 请求处理流程</title>
+      <link>https://argsno.github.io/post/spring-mvc-request-process/</link>
+      <pubDate>Wed, 24 Apr 2019 19:34:21 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/spring-mvc-request-process/</guid>
+      <description>在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —</description>
+    </item>
     
     <item>
       <title>Filter（过滤器）和Interceptor（拦截器）</title>
@@ -17,7 +26,7 @@
       <pubDate>Tue, 23 Apr 2019 15:41:00 +0800</pubDate>
       
       <guid>https://argsno.github.io/post/filterinterceptor/</guid>
-      <description></description>
+      <description>引言 过滤器（Filter）和拦截器（Interceptor）由于功能差不多，都可以用来对请求进行预处理和对响应结果进行处理，可能比较容易搞混</description>
     </item>
     
     <item>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>归档 - argsno</title>
+  <title>Spring MVC - 请求处理流程 - argsno</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="argsno" /><meta name="keywords" content="argsno, Java" />
+<meta name="author" content="argsno" /><meta name="description" content="在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —" /><meta name="keywords" content="argsno, Java" />
 
 
 
@@ -26,9 +26,7 @@
 <meta name="generator" content="Hugo 0.56.0-DEV with even 4.0.0" />
 
 
-<link rel="canonical" href="https://argsno.github.io/post/" />
-  <link href="https://argsno.github.io/post/index.xml" rel="alternate" type="application/rss+xml" title="argsno" />
-  <link href="https://argsno.github.io/post/index.xml" rel="feed" type="application/rss+xml" title="argsno" />
+<link rel="canonical" href="https://argsno.github.io/post/spring-mvc-request-process/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -40,19 +38,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://argsno.github.io/post/" />
+<meta property="og:title" content="Spring MVC - 请求处理流程" />
+<meta property="og:description" content="在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://argsno.github.io/post/spring-mvc-request-process/" />
+<meta property="article:published_time" content="2019-04-24T19:34:21&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-24T19:34:21&#43;08:00"/>
 
-<meta property="og:updated_time" content="2019-04-24T19:34:21&#43;08:00"/>
+<meta itemprop="name" content="Spring MVC - 请求处理流程">
+<meta itemprop="description" content="在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —">
 
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
 
+<meta itemprop="datePublished" content="2019-04-24T19:34:21&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-24T19:34:21&#43;08:00" />
+<meta itemprop="wordCount" content="1244">
+
+
+
+<meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
+<meta name="twitter:title" content="Spring MVC - 请求处理流程"/>
+<meta name="twitter:description" content="在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -112,74 +118,74 @@
     <main id="main" class="main">
       <div class="content-wrapper">
         <div id="content" class="content">
-          
-<section id="archive" class="archive">
-      <div class="collection-title">
-        <h2 class="archive-year">2019</h2>
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Spring MVC - 请求处理流程</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-24 </span>
+        
+          <span class="more-meta"> 约 1244 字 </span>
+          <span class="more-meta"> 预计阅读 3 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
       </div>
+    </header>
 
-    <div class="archive-post">
-      <span class="archive-post-time">
-        04-24
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/spring-mvc-request-process/" class="archive-post-link">
-          Spring MVC - 请求处理流程
-        </a>
-      </span>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    
+  </div>
+</div>
+    <div class="post-content">
+      <p>在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —&gt; “HandlerMapping（处理器映射）” —&gt; “Controller（控制器）” —&gt; “ModelAndView（模型和视图）” —&gt; “ViewResolver（视图解析器）” —&gt; “View（视图）” —&gt; “Response（响应）”结束，其中DispatcherServlet、HandlerMapping和ViewResolver只需要在XML文件中配置即可，从而大大提高了开发的效率，特别是对于 HandlerMapping 框架为其提供了默认的配置。涉及到了数据结构主要如下：
+<img src="https://ws2.sinaimg.cn/large/006tNc79ly1g2dym7tnj6j30d707xdfo.jpg" alt="" /></p>
+
+<p>Spring MVC框架的流程图如下所示：
+<img src="https://ws4.sinaimg.cn/large/006tNc79ly1g2dyg5cfvgj30k40b775q.jpg" alt="" /></p>
+
+<p>主要步骤如下：</p>
+
+<ol>
+<li>在请求离开浏览器时，会带有用户所请求内容的信息，至少会包含 请求的URL。但是还可能带有其他的信息，例如用户提交的表单信息。请求旅程的第一站是Spring的DispatcherServlet。前端控制器是常用的Web应用程序模 式，在这里一个单实例的Servlet将请求委托给应用程序的其他组件来 执行实际的处理。在Spring MVC中，DispatcherServlet就是前端控制器。</li>
+<li>DispatcherServlet的任务是将请求发送给Spring MVC控制器 （controller）。控制器是一个用于处理请求的Spring组件。在典型的应用程序中可能会有多个控制器，DispatcherServlet需要知道 应该将请求发送给哪个控制器。所以DispatcherServlet以会查询一个或多个处理器映射（handler mapping） 来确定请求的下一站在哪里。处理器映射会根据请求所携带的URL信息来进行决策。</li>
+<li>一旦选择了合适的控制器，DispatcherServlet会将请求发送给选中的控制器。到了控制器，请求会卸下其负载（用户提交的信息）并耐心等待控制器处理这些信息。（实际上，设计良好的控制器 本身只处理很少甚至不处理工作，而是将业务逻辑委托给一个或多个服务对象进行处理。）</li>
+<li>控制器在完成逻辑处理后，通常会产生一些信息，这些信息需要返回给用户并在浏览器上显示。这些信息被称为模型（model）。不过，仅仅给用户返回原始的信息是不够的——这些信息需要以用户友好的方式进行格式化。所以，信息需要发送给一个视图 （view）。控制器所做的最后一件事就是将模型数据打包，并且标示出用于渲染输出的视图名。它接下来会将请求连同模型和视图名发送回 DispatcherServlet。</li>
+<li>传递给 DispatcherServlet的视图名仅仅是一个逻辑名称，这个名字将会用来查找产生结果的真正视图。DispatcherServlet将会使用视图解析器（view resolver） 来将逻辑视图名匹配为一个特定的视图实现。</li>
+<li>请求的最后一站是视图的实现，在这里它将交付模型数据。</li>
+<li>视图将使用模型数据渲染输出，这个输出会通过响应对象传递给客户端。</li>
+</ol>
+
     </div>
 
-    <div class="archive-post">
-      <span class="archive-post-time">
-        04-23
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/filterinterceptor/" class="archive-post-link">
-          Filter（过滤器）和Interceptor（拦截器）
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        04-23
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/tree-traverse/" class="archive-post-link">
-          树的遍历
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        02-04
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/%E5%86%99%E6%97%A5%E5%BF%97%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B%E5%84%BF/" class="archive-post-link">
-          写日志的那些事儿
-        </a>
-      </span>
-    </div>
-
-    <div class="archive-post">
-      <span class="archive-post-time">
-        01-26
-      </span>
-      <span class="archive-post-title">
-        <a href="/post/dianping-search-deeplearning/" class="archive-post-link">
-          大众点评搜索基于知识图谱的深度学习排序实践
-        </a>
-      </span>
-    </div></section>
-
-<nav class="pagination">
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">argsno</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-24
+        
+    </span>
+  </p>
   
-  <a class="next" href="/post/page/2/">
-      <span class="next-text">下一页</span>
-      <i class="iconfont icon-right"></i>
-    </a>
-</nav>
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/filterinterceptor/">
+            <span class="next-text nav-default">Filter（过滤器）和Interceptor（拦截器）</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
         </div>
         
 
