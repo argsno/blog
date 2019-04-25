@@ -6,10 +6,19 @@
     <description>Recent content on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 24 Apr 2019 19:34:21 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 25 Apr 2019 15:22:14 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Spring MVC - Controller vs RestController</title>
+      <link>https://argsno.github.io/post/spring-mvc-controller-vs-restcontroller/</link>
+      <pubDate>Thu, 25 Apr 2019 15:22:14 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/spring-mvc-controller-vs-restcontroller/</guid>
+      <description>Spring基于注解的MVC框架简化了RESTful Web服务的开发流程。传统的Spring MVC控制器和RESTful服务控制器的主要区别</description>
+    </item>
     
     <item>
       <title>Spring MVC - 请求处理流程</title>
