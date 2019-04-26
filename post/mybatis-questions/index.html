@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>[转]MyBatis - 常见面试题笔记 - argsno</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="argsno" /><meta name="description" content="{}和${}的区别是什么？ 在Mybatis中，有两种占位符： #{}解析传递进来的参数数据 ${}对传递进来的参数原样拼接在SQL中 #{}是预编" /><meta name="keywords" content="argsno, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.0-DEV with even 4.0.0" />
+
+
+<link rel="canonical" href="https://argsno.github.io/post/mybatis-questions/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="[转]MyBatis - 常见面试题笔记" />
+<meta property="og:description" content="{}和${}的区别是什么？ 在Mybatis中，有两种占位符： #{}解析传递进来的参数数据 ${}对传递进来的参数原样拼接在SQL中 #{}是预编" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://argsno.github.io/post/mybatis-questions/" />
+<meta property="article:published_time" content="2019-04-26T10:59:02&#43;08:00"/>
+<meta property="article:modified_time" content="2019-04-26T10:59:02&#43;08:00"/>
+
+<meta itemprop="name" content="[转]MyBatis - 常见面试题笔记">
+<meta itemprop="description" content="{}和${}的区别是什么？ 在Mybatis中，有两种占位符： #{}解析传递进来的参数数据 ${}对传递进来的参数原样拼接在SQL中 #{}是预编">
+
+
+<meta itemprop="datePublished" content="2019-04-26T10:59:02&#43;08:00" />
+<meta itemprop="dateModified" content="2019-04-26T10:59:02&#43;08:00" />
+<meta itemprop="wordCount" content="4441">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="[转]MyBatis - 常见面试题笔记"/>
+<meta name="twitter:description" content="{}和${}的区别是什么？ 在Mybatis中，有两种占位符： #{}解析传递进来的参数数据 ${}对传递进来的参数原样拼接在SQL中 #{}是预编"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Argsno</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Argsno</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">[转]MyBatis - 常见面试题笔记</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-04-26 </span>
+        
+          <span class="more-meta"> 约 4441 字 </span>
+          <span class="more-meta"> 预计阅读 9 分钟 </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次阅读 </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#和-的区别是什么">{}和${}的区别是什么？</a></li>
+<li><a href="#当实体类中的属性名和表中的字段名不一样-怎么办">当实体类中的属性名和表中的字段名不一样 ，怎么办 ？</a></li>
+<li><a href="#如何获取自动生成的-主-键值">如何获取自动生成的(主)键值?</a></li>
+<li><a href="#在mapper中如何传递多个参数">在mapper中如何传递多个参数?</a></li>
+<li><a href="#mybatis的xml映射文件中-不同的xml映射文件-id是否可以重复">Mybatis的Xml映射文件中，不同的Xml映射文件，id是否可以重复？</a></li>
+<li><a href="#为什么说mybatis是半自动orm映射工具-它与全自动的区别在哪里">为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</a></li>
+<li><a href="#通常一个xml映射文件-都会写一个dao接口与之对应-请问-这个dao接口的工作原理是什么-dao接口里的方法-参数不同时-方法能重载吗">通常一个Xml映射文件，都会写一个Dao接口与之对应，请问，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？</a></li>
+<li><a href="#mybatis比ibatis比较大的几个改进是什么">Mybatis比IBatis比较大的几个改进是什么</a></li>
+<li><a href="#接口绑定有几种实现方式-分别是怎么实现的">接口绑定有几种实现方式,分别是怎么实现的?</a></li>
+<li><a href="#mybatis是如何进行分页的-分页插件的原理是什么">Mybatis是如何进行分页的？分页插件的原理是什么？</a></li>
+<li><a href="#简述mybatis的插件运行原理-以及如何编写一个插件">简述Mybatis的插件运行原理，以及如何编写一个插件</a></li>
+<li><a href="#mybatis都有哪些executor执行器-它们之间的区别是什么">Mybatis都有哪些Executor执行器？它们之间的区别是什么？</a></li>
+<li><a href="#mybatis与hibernate有哪些不同">MyBatis与Hibernate有哪些不同？</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h2 id="和-的区别是什么">{}和${}的区别是什么？</h2>
+
+<p>在Mybatis中，有两种占位符：</p>
+
+<ul>
+<li>#{}解析传递进来的参数数据</li>
+<li>${}对传递进来的参数原样拼接在SQL中</li>
+<li>#{}是预编译处理，${}是字符串替换。</li>
+<li>使用#{}可以有效的防止SQL注入，提高系统安全性。</li>
+</ul>
+
+<h2 id="当实体类中的属性名和表中的字段名不一样-怎么办">当实体类中的属性名和表中的字段名不一样 ，怎么办 ？</h2>
+
+<p>第1种： 通过在查询的sql语句中定义字段名的别名，让字段名的别名和实体类的属性名一致</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">     <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">”selectorder”</span> <span class="na">parametertype=</span><span class="s">”int”</span> <span class="na">resultetype=</span><span class="s">”me.gacl.domain.order”</span><span class="nt">&gt;</span> 
+       select order_id id, order_no orderno ,order_price price form orders where order_id=#{id}; 
+    <span class="nt">&lt;/select&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>第2种： 通过<code>&lt;resultMap&gt;</code>来映射字段名和实体类属性名的一一对应的关系</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"> <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;getOrder&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;int&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;orderresultmap&#34;</span><span class="nt">&gt;</span>
+        select * from orders where order_id=#{id}
+    <span class="nt">&lt;/select&gt;</span>
+   <span class="nt">&lt;resultMap</span> <span class="na">type=</span><span class="s">”me.gacl.domain.order”</span> <span class="na">id=</span><span class="s">”orderresultmap”</span><span class="nt">&gt;</span> 
+        <span class="cp">&lt;!–用id属性来映射主键字段–&gt;</span> 
+        <span class="nt">&lt;id</span> <span class="na">property=</span><span class="s">”id”</span> <span class="na">column=</span><span class="s">”order_id”</span><span class="nt">&gt;</span> 
+        <span class="cp">&lt;!–用result属性来映射非主键字段，property为实体类属性名，column为数据表中的属性–&gt;</span> 
+        <span class="nt">&lt;result</span> <span class="na">property =</span> <span class="s">“orderno”</span> <span class="na">column =</span><span class="s">”order_no”/</span><span class="nt">&gt;</span> 
+        <span class="nt">&lt;result</span> <span class="na">property=</span><span class="s">”price”</span> <span class="na">column=</span><span class="s">”order_price”</span> <span class="nt">/&gt;</span> 
+    <span class="nt">&lt;/reslutMap&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>我认为第二种方式会好一点。</p>
+
+<h2 id="如何获取自动生成的-主-键值">如何获取自动生成的(主)键值?</h2>
+
+<p>如果我们一般插入数据的话，如果我们想要知道刚刚插入的数据的主键是多少，我们可以通过以下的方式来获取</p>
+
+<p>需求：</p>
+
+<blockquote>
+<p>user对象插入到数据库后，新记录的主键要通过user对象返回，通过user获取主键值。</p>
+</blockquote>
+
+<p>解决思路：</p>
+
+<blockquote>
+<p>通过LAST_INSERT_ID()获取刚插入记录的自增主键值，在insert语句执行后，执行select LAST_INSERT_ID()就可以获取自增主键。</p>
+</blockquote>
+
+<p>mysql:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;insertUser&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;cn.itcast.mybatis.po.User&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;selectKey</span> <span class="na">keyProperty=</span><span class="s">&#34;id&#34;</span> <span class="na">order=</span><span class="s">&#34;AFTER&#34;</span> <span class="na">resultType=</span><span class="s">&#34;int&#34;</span><span class="nt">&gt;</span>
+            select LAST_INSERT_ID()
+        <span class="nt">&lt;/selectKey&gt;</span>
+        INSERT INTO USER(username,birthday,sex,address) VALUES(#{username},#{birthday},#{sex},#{address})
+    <span class="nt">&lt;/insert&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>oracle:</p>
+
+<p>实现思路：</p>
+
+<p>先查询序列得到主键，将主键设置到user对象中，将user对象插入数据库。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="c">&lt;!-- oracle
+</span><span class="c">    在执行insert之前执行select 序列.nextval() from dual取出序列最大值，将值设置到user对象 的id属性
+</span><span class="c">     --&gt;</span>
+    <span class="nt">&lt;insert</span> <span class="na">id=</span><span class="s">&#34;insertUser&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;cn.itcast.mybatis.po.User&#34;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;selectKey</span> <span class="na">keyProperty=</span><span class="s">&#34;id&#34;</span> <span class="na">order=</span><span class="s">&#34;BEFORE&#34;</span> <span class="na">resultType=</span><span class="s">&#34;int&#34;</span><span class="nt">&gt;</span>
+            select 序列.nextval() from dual
+        <span class="nt">&lt;/selectKey&gt;</span>
+        
+        INSERT INTO USER(id,username,birthday,sex,address) VALUES( 序列.nextval(),#{username},#{birthday},#{sex},#{address})
+    <span class="nt">&lt;/insert&gt;</span> </code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="在mapper中如何传递多个参数">在mapper中如何传递多个参数?</h2>
+
+<p>第一种：使用占位符的思想</p>
+
+<ul>
+<li>在映射文件中使用#{0},#{1}代表传递进来的第几个参数
+
+<ul>
+<li>经@冬马党测试，如果使用的是JDK8的话，那么会有Bug</li>
+</ul></li>
+<li>使用@param注解来命名参数</li>
+
+<li><p>#{0},#{1}方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">//对应的xml,#{0}代表接收的是dao层中的第一个参数，#{1}代表dao层中第二参数，更多参数一致往后加即可。
+
+<span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;selectUser&#34;</span><span class="na">resultMap=</span><span class="s">&#34;BaseResultMap&#34;</span><span class="nt">&gt;</span>  
+select *  fromuser_user_t   whereuser_name = #{0} anduser_area=#{1}  
+<span class="nt">&lt;/select&gt;</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ul>
+
+<p>@param注解方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">        <span class="kd">public</span> <span class="kd">interface</span> <span class="nc">usermapper</span> <span class="o">{</span> 
+         <span class="n">user</span> <span class="nf">selectuser</span><span class="o">(</span><span class="nd">@param</span><span class="o">(</span><span class="err">“</span><span class="n">username</span><span class="err">”</span><span class="o">)</span> <span class="n">string</span> <span class="n">username</span><span class="o">,</span> 
+         <span class="nd">@param</span><span class="o">(</span><span class="err">“</span><span class="n">hashedpassword</span><span class="err">”</span><span class="o">)</span> <span class="n">string</span> <span class="n">hashedpassword</span><span class="o">);</span> 
+        <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">”selectuser”</span> <span class="na">resulttype=</span><span class="s">”user”</span><span class="nt">&gt;</span> 
+         select id, username, hashedpassword 
+         from some_table 
+         where username = #{username} 
+         and hashedpassword = #{hashedpassword} 
+    <span class="nt">&lt;/select&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>第二种：使用Map集合作为参数来装载</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java">     <span class="k">try</span><span class="o">{</span>
+            <span class="c1">//映射文件的命名空间.SQL片段的ID，就可以调用对应的映射文件中的SQL
+</span><span class="c1"></span>
+
+            <span class="cm">/**
+</span><span class="cm">             * 由于我们的参数超过了两个，而方法中只有一个Object参数收集
+</span><span class="cm">             * 因此我们使用Map集合来装载我们的参数
+</span><span class="cm">             */</span>
+            <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">();</span>
+            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;start&#34;</span><span class="o">,</span> <span class="n">start</span><span class="o">);</span>
+            <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&#34;end&#34;</span><span class="o">,</span> <span class="n">end</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">sqlSession</span><span class="o">.</span><span class="na">selectList</span><span class="o">(</span><span class="s">&#34;StudentID.pagination&#34;</span><span class="o">,</span> <span class="n">map</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="n">Exception</span> <span class="n">e</span><span class="o">){</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="n">sqlSession</span><span class="o">.</span><span class="na">rollback</span><span class="o">();</span>
+            <span class="k">throw</span> <span class="n">e</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">finally</span><span class="o">{</span>
+            <span class="n">MybatisUtil</span><span class="o">.</span><span class="na">closeSqlSession</span><span class="o">();</span>
+        <span class="o">}</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml">    <span class="c">&lt;!--分页查询--&gt;</span>
+    <span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&#34;pagination&#34;</span> <span class="na">parameterType=</span><span class="s">&#34;map&#34;</span> <span class="na">resultMap=</span><span class="s">&#34;studentMap&#34;</span><span class="nt">&gt;</span>
+        /*根据key自动找到对应Map集合的value*/
+        select * from students limit #{start},#{end};
+    <span class="nt">&lt;/select&gt;</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="mybatis的xml映射文件中-不同的xml映射文件-id是否可以重复">Mybatis的Xml映射文件中，不同的Xml映射文件，id是否可以重复？</h2>
+
+<p>如果配置了namespace那么当然是可以重复的，因为我们的Statement实际上就是namespace+id</p>
+
+<p>如果没有配置namespace的话，那么相同的id就会导致覆盖了。</p>
+
+<h2 id="为什么说mybatis是半自动orm映射工具-它与全自动的区别在哪里">为什么说Mybatis是半自动ORM映射工具？它与全自动的区别在哪里？</h2>
+
+<ul>
+<li>Hibernate属于全自动ORM映射工具，使用Hibernate查询关联对象或者关联集合对象时，可以根据对象关系模型直接获取，所以它是全自动的。</li>
+<li>而Mybatis在查询关联对象或关联集合对象时，需要手动编写sql来完成，所以，称之为半自动ORM映射工具。</li>
+</ul>
+
+<h2 id="通常一个xml映射文件-都会写一个dao接口与之对应-请问-这个dao接口的工作原理是什么-dao接口里的方法-参数不同时-方法能重载吗">通常一个Xml映射文件，都会写一个Dao接口与之对应，请问，这个Dao接口的工作原理是什么？Dao接口里的方法，参数不同时，方法能重载吗？</h2>
+
+<ul>
+<li>Dao接口，就是人们常说的Mapper接口，接口的全限名，就是映射文件中的namespace的值，接口的方法名，就是映射文件中MappedStatement的id值，接口方法内的参数，就是传递给sql的参数。</li>
+<li>Mapper接口是没有实现类的，当调用接口方法时，接口全限名+方法名拼接字符串作为key值，可唯一定位一个MappedStatement</li>
+</ul>
+
+<p>举例：</p>
+
+<p>com.mybatis3.mappers.StudentDao.findStudentById，</p>
+
+<p>可以唯一找到namespace为com.mybatis3.mappers.StudentDao下面id = findStudentById的MappedStatement。在Mybatis中，每一个&lt;select&gt;、&lt;insert&gt;、&lt;update&gt;、&lt;delete&gt;标签，都会被解析为一个MappedStatement对象。
+Dao接口里的方法，是不能重载的，因为是全限名+方法名的保存和寻找策略。</p>
+
+<p>Dao接口的工作原理是JDK动态代理，Mybatis运行时会使用JDK动态代理为Dao接口生成代理proxy对象，代理对象proxy会拦截接口方法，转而执行MappedStatement所代表的sql，然后将sql执行结果返回。</p>
+
+<p>详情可参考：</p>
+
+<p><a href="https://www.cnblogs.com/soundcode/p/6497291.html">https://www.cnblogs.com/soundcode/p/6497291.html</a></p>
+
+<h2 id="mybatis比ibatis比较大的几个改进是什么">Mybatis比IBatis比较大的几个改进是什么</h2>
+
+<ol>
+<li>有接口绑定,包括注解绑定sql和xml绑定Sql ,</li>
+<li>动态sql由原来的节点配置变成OGNL表达式,</li>
+<li>在一对一,一对多的时候引进了association,在一对多的时候引入了collection节点,不过都是在resultMap里面配置</li>
+</ol>
+
+<h2 id="接口绑定有几种实现方式-分别是怎么实现的">接口绑定有几种实现方式,分别是怎么实现的?</h2>
+
+<p>接口绑定有两种实现方式：</p>
+
+<ul>
+<li>一种是通过注解绑定，就是在接口的方法上面加上@Select@Update等注解里面包含Sql语句来绑定</li>
+<li>另外一种就是通过xml里面写SQL来绑定,在这种情况下,要指定xml映射文件里面的namespace必须为接口的全路径名.</li>
+</ul>
+
+<h2 id="mybatis是如何进行分页的-分页插件的原理是什么">Mybatis是如何进行分页的？分页插件的原理是什么？</h2>
+
+<p>Mybatis使用<code>RowBounds</code>对象进行分页，它是针对ResultSet结果集执行的内存分页，而非物理分页，可以在sql内直接书写带有物理分页的参数来完成物理分页功能，也可以使用分页插件来完成物理分页。</p>
+
+<p>分页插件的基本原理是使用Mybatis提供的插件接口，实现自定义插件，在插件的拦截方法内拦截待执行的sql，然后重写sql，根据dialect方言，添加对应的物理分页语句和物理分页参数。</p>
+
+<p>举例：<code>select * from student</code>，拦截sql后重写为：<code>select t.* from （select * from student）t limit 0，10</code></p>
+
+<p>分页插件使用参考资料：</p>
+
+<ul>
+<li><a href="https://www.cnblogs.com/kangoroo/p/7998433.html">https://www.cnblogs.com/kangoroo/p/7998433.html</a></li>
+<li><a href="http://blog.csdn.net/yuchao2015/article/details/55001182">http://blog.csdn.net/yuchao2015/article/details/55001182</a></li>
+<li><a href="https://www.cnblogs.com/ljdblog/p/6725094.html">https://www.cnblogs.com/ljdblog/p/6725094.html</a></li>
+</ul>
+
+<h2 id="简述mybatis的插件运行原理-以及如何编写一个插件">简述Mybatis的插件运行原理，以及如何编写一个插件</h2>
+
+<p>Mybatis仅可以编写针对<code>ParameterHandler</code>、<code>ResultSetHandler</code>、<code>StatementHandler</code>、<code>Executor</code>这4种接口的插件，Mybatis使用JDK的动态代理，为需要拦截的接口生成代理对象以实现接口方法拦截功能，每当执行这4种接口对象的方法时，就会进入拦截方法，具体就是InvocationHandler的invoke()方法，当然，只会拦截那些你指定需要拦截的方法。</p>
+
+<p>实现Mybatis的Interceptor接口并复写intercept()方法，然后在给插件编写注解，指定要拦截哪一个接口的哪些方法即可，记住，别忘了在配置文件中配置你编写的插件。</p>
+
+<h2 id="mybatis都有哪些executor执行器-它们之间的区别是什么">Mybatis都有哪些Executor执行器？它们之间的区别是什么？</h2>
+
+<p>Mybatis有三种基本的Executor执行器，SimpleExecutor、ReuseExecutor、BatchExecutor。</p>
+
+<p>SimpleExecutor：每执行一次update或select，就开启一个Statement对象，用完立刻关闭Statement对象。
+ReuseExecutor：执行update或select，以sql作为key查找Statement对象，存在就使用，不存在就创建，用完后，不关闭Statement对象，而是放置于Map<String, Statement>内，供下一次使用。简言之，就是重复使用Statement对象。
+BatchExecutor：执行update（没有select，JDBC批处理不支持select），将所有sql都添加到批处理中（addBatch()），等待统一执行（executeBatch()），它缓存了多个Statement对象，每个Statement对象都是addBatch()完毕后，等待逐一执行executeBatch()批处理。与JDBC批处理相同。
+作用范围：Executor的这些特点，都严格限制在SqlSession生命周期范围内。</p>
+
+<h2 id="mybatis与hibernate有哪些不同">MyBatis与Hibernate有哪些不同？</h2>
+
+<p>Mybatis和hibernate不同，它不完全是一个ORM框架，因为MyBatis需要程序员自己编写Sql语句，不过mybatis可以通过XML或注解方式灵活配置要运行的sql语句，并将java对象和sql语句映射生成最终执行的sql，最后将sql执行的结果再映射生成java对象。</p>
+
+<p>Mybatis学习门槛低，简单易学，程序员直接编写原生态sql，可严格控制sql执行性能，灵活度高，非常适合对关系数据模型要求不高的软件开发，例如互联网软件、企业运营类软件等，因为这类软件需求变化频繁，一但需求变化要求成果输出迅速。但是灵活的前提是mybatis无法做到数据库无关性，如果需要实现支持多种数据库的软件则需要自定义多套sql映射文件，工作量大。</p>
+
+<p>Hibernate对象/关系映射能力强，数据库无关性好，对于关系模型要求高的软件（例如需求固定的定制化软件）如果用hibernate开发可以节省很多代码，提高效率。但是Hibernate的缺点是学习门槛高，要精通门槛更高，而且怎么设计O/R映射，在性能和对象模型之间如何权衡，以及怎样用好Hibernate需要具有很强的经验和能力才行。
+总之，按照用户的需求在有限的资源环境下只要能做出维护性、扩展性良好的软件架构都是好架构，所以框架只有适合才是最好。</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">argsno</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-04-26
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/spring-mvc-controller-vs-restcontroller/">
+            <span class="next-text nav-default">Spring MVC - Controller vs RestController</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:argsno@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://argsno.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">argsno</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 25 Apr 2019 15:22:14 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 26 Apr 2019 10:59:02 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[转]MyBatis - 常见面试题笔记</title>
+      <link>https://argsno.github.io/post/mybatis-questions/</link>
+      <pubDate>Fri, 26 Apr 2019 10:59:02 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/mybatis-questions/</guid>
+      <description>{}和${}的区别是什么？ 在Mybatis中，有两种占位符： #{}解析传递进来的参数数据 ${}对传递进来的参数原样拼接在SQL中 #{}是预编</description>
+    </item>
     
     <item>
       <title>Spring MVC - Controller vs RestController</title>
@@ -26,7 +35,7 @@
       <pubDate>Wed, 24 Apr 2019 19:34:21 +0800</pubDate>
       
       <guid>https://argsno.github.io/post/spring-mvc-request-process/</guid>
-      <description></description>
+      <description>在Spring MVC框架中，用户发起请求，从“Request（请求）”开始，会依次进入“DispatcherServlet（核心分发器）” —</description>
     </item>
     
     <item>
