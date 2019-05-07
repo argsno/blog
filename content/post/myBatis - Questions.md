@@ -1,7 +1,7 @@
 ---
 title: "[转]MyBatis - 常见面试题笔记"
 date: 2019-04-26T10:59:02+08:00
-draft: false
+draft: true
 ---
 
 ## {}和${}的区别是什么？
