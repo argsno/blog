@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>算法精进   K D树 - argsno</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="argsno" /><meta name="description" content="概述 k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻" /><meta name="keywords" content="argsno, Java" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.56.0-DEV with even 4.0.0" />
+
+
+<link rel="canonical" href="https://argsno.github.io/post/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%BF%9B-k-d%E6%A0%91/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<link href="/dist/even.c2a46f00.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="算法精进   K D树" />
+<meta property="og:description" content="概述 k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://argsno.github.io/post/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%BF%9B-k-d%E6%A0%91/" />
+<meta property="article:published_time" content="2019-05-19T21:19:46+08:00" />
+<meta property="article:modified_time" content="2019-05-19T21:19:46+08:00" />
+
+<meta itemprop="name" content="算法精进   K D树">
+<meta itemprop="description" content="概述 k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻">
+
+
+<meta itemprop="datePublished" content="2019-05-19T21:19:46&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-19T21:19:46&#43;08:00" />
+<meta itemprop="wordCount" content="2195">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="算法精进   K D树"/>
+<meta name="twitter:description" content="概述 k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Argsno</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">Argsno</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">算法精进   K D树</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2019-05-19 </span>
+        
+          <span class="more-meta"> 约 2195 字 </span>
+          <span class="more-meta"> 预计阅读 5 分钟 </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+<ul>
+<li><a href="#概述">概述</a></li>
+<li><a href="#算法原理">算法原理</a>
+<ul>
+<li><a href="#树的构建">树的构建</a>
+<ul>
+<li><a href="#切分维度选择优化">切分维度选择优化</a></li>
+<li><a href="#中值选择优化">中值选择优化</a></li>
+<li><a href="#例子">例子</a></li>
+<li><a href="#实现">实现</a></li>
+</ul></li>
+<li><a href="#寻找d维最小坐标值点">寻找d维最小坐标值点</a></li>
+<li><a href="#新增节点">新增节点</a></li>
+<li><a href="#删除节点">删除节点</a></li>
+</ul></li>
+<li><a href="#复杂度分析">复杂度分析</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      
+
+<h1 id="概述">概述</h1>
+
+<p>k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻搜索）。K-D树是二进制空间分割树的特殊的情况。</p>
+
+<h1 id="算法原理">算法原理</h1>
+
+<p>k-d tree是每个节点均为k维数值点的二叉树，其上的每个节点代表一个超平面，该超平面垂直于当前划分维度的坐标轴，并在该维度上将空间划分为两部分，一部分在其左子树，另一部分在其右子树。即若当前节点的划分维度为d，其左子树上所有点在d维的坐标值均小于当前值，右子树上所有点在d维的坐标值均大于等于当前值，本定义对其任意子节点均成立。</p>
+
+<h2 id="树的构建">树的构建</h2>
+
+<p>一个平衡的k-d tree，其所有叶子节点到根节点的距离近似相等。但一个平衡的k-d tree对最近邻搜索、空间搜索等应用场景并非是最优的。</p>
+
+<p>常规的k-d tree的构建过程为：循环依序取数据点的各维度来作为切分维度，取数据点在该维度的中值作为切分超平面，将中值左侧的数据点挂在其左子树，将中值右侧的数据点挂在其右子树。递归处理其子树，直至所有数据点挂载完毕。</p>
+
+<h3 id="切分维度选择优化">切分维度选择优化</h3>
+
+<p>构建开始前，对比数据点在各维度的分布情况，数据点在某一维度坐标值的方差越大分布越分散，方差越小分布越集中。从方差大的维度开始切分可以取得很好的切分效果及平衡性。</p>
+
+<h3 id="中值选择优化">中值选择优化</h3>
+
+<p>第一种，算法开始前，对原始数据点在所有维度进行一次排序，存储下来，然后在后续的中值选择中，无须每次都对其子集进行排序，提升了性能。</p>
+
+<p>第二种，从原始数据点中随机选择固定数目的点，然后对其进行排序，每次从这些样本点中取中值，来作为分割超平面。该方式在实践中被证明可以取得很好性能及很好的平衡性。</p>
+
+<h3 id="例子">例子</h3>
+
+<p>本文采用常规的构建方式，以二维平面点(x,y)的集合(2,3)，(5,4)，(9,6)，(4,7)，(8,1)，(7,2)为例结合下图来说明k-d tree的构建过程。</p>
+
+<ol>
+<li>构建根节点时，此时的切分维度为x，如上点集合在x维从小到大排序为(2,3)，(4,7)，(5,4)，(7,2)，(8,1)，(9,6)；其中值为(7,2)。（注：2,4,5,7,8,9在数学中的中值为(5 + 7)/2=6，但因该算法的中值需在点集合之内，所以本文中值计算用的是len(points)//2=3, points[3]=(7,2)）</li>
+<li>(2,3)，(4,7)，(5,4)挂在(7,2)节点的左子树，(8,1)，(9,6)挂在(7,2)节点的右子树。</li>
+<li>构建(7,2)节点的左子树时，点集合(2,3)，(4,7)，(5,4)此时的切分维度为y，中值为(5,4)作为分割平面，(2,3)挂在其左子树，(4,7)挂在其右子树。</li>
+<li>构建(7,2)节点的右子树时，点集合(8,1)，(9,6)此时的切分维度也为y，中值为(9,6)作为分割平面，(8,1)挂在其左子树。至此k-d tree构建完成。
+<img src="http://ww2.sinaimg.cn/large/006tNc79ly1g36y5azze7j30d008zdgl.jpg" alt="k-d树" /></li>
+</ol>
+
+<p>上述的构建过程结合下图可以看出，构建一个k-d tree即是将一个二维平面逐步划分的过程。
+<img src="http://ww4.sinaimg.cn/large/006tNc79ly1g36y5vgq1hj30ci0cn74z.jpg" alt="" /></p>
+
+<h3 id="实现">实现</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">kd_tree</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+    <span class="k">if</span> <span class="mi">0</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">None</span>
+    <span class="n">cutting_dim</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">medium_index</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">points</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="n">cutting_dim</span><span class="p">))</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">medium_index</span><span class="p">])</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">kd_tree</span><span class="p">(</span><span class="n">points</span><span class="p">[:</span><span class="n">medium_index</span><span class="p">],</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">node</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">kd_tree</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="n">medium_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:],</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">node</span></code></pre></td></tr></table>
+</div>
+</div>
+<h2 id="寻找d维最小坐标值点">寻找d维最小坐标值点</h2>
+
+<ol>
+<li><p>若当前节点的切分维度是d
+因其右子树节点均大于等于当前节点在d维的坐标值，所以可以忽略其右子树，仅在其左子树进行搜索。若无左子树，当前节点即是最小坐标值节点。</p></li>
+
+<li><p>若当前节点的切分维度不是d
+需在其左子树与右子树分别进行递归搜索。
+如下为寻找d维最小坐标值点代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">findmin</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">depth</span><span class="p">,</span> <span class="n">cutting_dim</span><span class="p">,</span> <span class="nb">min</span><span class="p">):</span>
+<span class="k">if</span> <span class="nb">min</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="nb">min</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">location</span>
+<span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">min</span>
+<span class="n">current_cutting_dim</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="nb">min</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">location</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nb">min</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]:</span>
+    <span class="nb">min</span> <span class="o">=</span> <span class="n">n</span><span class="o">.</span><span class="n">location</span>
+<span class="k">if</span> <span class="n">cutting_dim</span> <span class="o">==</span> <span class="n">current_cutting_dim</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">findmin</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cutting_dim</span><span class="p">,</span> <span class="nb">min</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">leftmin</span> <span class="o">=</span> <span class="n">findmin</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cutting_dim</span><span class="p">,</span> <span class="nb">min</span><span class="p">)</span>
+    <span class="n">rightmin</span> <span class="o">=</span> <span class="n">findmin</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">cutting_dim</span><span class="p">,</span> <span class="nb">min</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">leftmin</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">rightmin</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">rightmin</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">leftmin</span></code></pre></td></tr></table>
+</div>
+</div></li>
+</ol>
+
+<h2 id="新增节点">新增节点</h2>
+
+<p>从根节点出发，若待插入节点在当前节点切分维度的坐标值小于当前节点在该维度的坐标值时，在其左子树插入；若大于等于当前节点在该维度的坐标值时，在其右子树插入。递归遍历，直至叶子节点。
+如下为新增节点代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">insert</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">depth</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Node</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+    <span class="n">cutting_dim</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">point</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">n</span><span class="o">.</span><span class="n">location</span><span class="p">[</span><span class="n">cutting_dim</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">left</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">n</span><span class="o">.</span><span class="n">left</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">insert</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">right</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">n</span><span class="o">.</span><span class="n">right</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">point</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">insert</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span></code></pre></td></tr></table>
+</div>
+</div>
+<p>多次新增节点可能引起树的不平衡。不平衡性超过某一阈值时，需进行再平衡。</p>
+
+<h2 id="删除节点">删除节点</h2>
+
+<p>给定点p，查询数据集中与其距离最近点的过程即为最近邻搜索。</p>
+
+<p>如在上文构建好的k-d tree上搜索(3,5)的最近邻时，本文结合如下左右两图对二维空间的最近邻搜索过程作分析。
+<img src="http://ww2.sinaimg.cn/large/006tNc79ly1g36yahglo5j30d00blwg2.jpg" alt="" /></p>
+
+<ol>
+<li>首先从根节点(7,2)出发，将当前最近邻设为(7,2)，对该k-d tree作深度优先遍历。以(3,5)为圆心，其到(7,2)的距离为半径画圆（多维空间为超球面），可以看出(8,1)右侧的区域与该圆不相交，所以(8,1)的右子树全部忽略。</li>
+<li>接着走到(7,2)左子树根节点(5,4)，与原最近邻对比距离后，更新当前最近邻为(5,4)。以(3,5)为圆心，其到(5,4)的距离为半径画圆，发现(7,2)右侧的区域与该圆不相交，忽略该侧所有节点，这样(7,2)的整个右子树被标记为已忽略。</li>
+<li>遍历完(5,4)的左右叶子节点，发现与当前最优距离相等，不更新最近邻。所以(3,5)的最近邻为(5,4)。</li>
+</ol>
+
+<p>如下为最近邻搜索代码：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">NN</span><span class="p">(</span><span class="n">Point</span> <span class="n">Q</span><span class="p">,</span> <span class="n">kdTree</span> <span class="n">T</span><span class="p">,</span> <span class="nb">int</span> <span class="n">cd</span><span class="p">,</span> <span class="n">Rect</span> <span class="n">BB</span><span class="p">):</span>
+  <span class="o">//</span> <span class="k">if</span> <span class="n">this</span> <span class="n">bounding</span> <span class="n">box</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">far</span><span class="p">,</span> <span class="n">do</span> <span class="n">nothing</span>
+  <span class="k">if</span> <span class="n">T</span> <span class="o">==</span> <span class="n">NULL</span> <span class="ow">or</span> <span class="n">distance</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">BB</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">best_dist</span><span class="p">:</span>
+    <span class="k">return</span>   
+  
+  <span class="o">//</span> <span class="k">if</span> <span class="n">this</span> <span class="n">point</span> <span class="ow">is</span> <span class="n">better</span> <span class="n">than</span> <span class="n">the</span> <span class="n">best</span><span class="p">:</span> 
+  <span class="n">dist</span> <span class="o">=</span> <span class="n">distance</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">data</span><span class="p">)</span><span class="k">if</span> <span class="n">dist</span> <span class="o">&lt;</span> <span class="n">best_dist</span><span class="p">:</span>       
+    <span class="n">best</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">data</span>      
+    <span class="n">best_dist</span> <span class="o">=</span> <span class="n">dist</span>   
+  <span class="o">//</span> <span class="n">visit</span> <span class="n">subtrees</span> <span class="ow">is</span> <span class="n">most</span> <span class="n">promising</span> <span class="n">order</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">Q</span><span class="p">[</span><span class="n">cd</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">T</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">cd</span><span class="p">]:</span>      
+    <span class="n">NN</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">next_cd</span><span class="p">,</span> <span class="n">BB</span><span class="o">.</span><span class="n">trimLeft</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>      
+    <span class="n">NN</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">next_cd</span><span class="p">,</span> <span class="n">BB</span><span class="o">.</span><span class="n">trimRight</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>
+  <span class="k">else</span><span class="p">:</span>     
+    <span class="n">NN</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">next_cd</span><span class="p">,</span> <span class="n">BB</span><span class="o">.</span><span class="n">trimRight</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">data</span><span class="p">))</span>      
+    <span class="n">NN</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">next_cd</span><span class="p">,</span> <span class="n">BB</span><span class="o">.</span><span class="n">trimLeft</span><span class="p">(</span><span class="n">cd</span><span class="p">,</span> <span class="n">t</span><span class="o">.</span><span class="n">data</span><span class="p">))</span></code></pre></td></tr></table>
+</div>
+</div>
+<h1 id="复杂度分析">复杂度分析</h1>
+
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>平均复杂度</th>
+<th>最坏复杂度</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>新增节点</td>
+<td>O(logn)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>删除节点</td>
+<td>O(logn)</td>
+<td>O(n)</td>
+</tr>
+
+<tr>
+<td>最近邻搜索</td>
+<td>O(logn)</td>
+<td>O(n)</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">argsno</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+        2019-05-19
+        
+    </span>
+  </p>
+  
+  
+</div>
+<footer class="post-footer">
+      
+      <nav class="post-nav">
+        
+        <a class="next" href="/post/elasticsearch-%E5%85%A5%E9%97%A8/">
+            <span class="next-text nav-default">ElasticSearch 入门</span>
+            <span class="next-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="mailto:argsno@email.com" class="iconfont icon-email" title="email"></a>
+      <a href="http://localhost:1313" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+      <a href="http://localhost:1313" class="iconfont icon-twitter" title="twitter"></a>
+      <a href="http://localhost:1313" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="http://localhost:1313" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://localhost:1313" class="iconfont icon-google" title="google"></a>
+      <a href="http://localhost:1313" class="iconfont icon-github" title="github"></a>
+      <a href="http://localhost:1313" class="iconfont icon-weibo" title="weibo"></a>
+      <a href="http://localhost:1313" class="iconfont icon-zhihu" title="zhihu"></a>
+      <a href="http://localhost:1313" class="iconfont icon-douban" title="douban"></a>
+      <a href="http://localhost:1313" class="iconfont icon-pocket" title="pocket"></a>
+      <a href="http://localhost:1313" class="iconfont icon-tumblr" title="tumblr"></a>
+      <a href="http://localhost:1313" class="iconfont icon-instagram" title="instagram"></a>
+      <a href="http://localhost:1313" class="iconfont icon-gitlab" title="gitlab"></a>
+      <a href="http://localhost:1313" class="iconfont icon-bilibili" title="bilibili"></a>
+  <a href="https://argsno.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> 本站总访问量 <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 次 </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> 本站总访客数 <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> 人 </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">argsno</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="/dist/even.26188efa.min.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

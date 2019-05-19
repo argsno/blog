@@ -6,10 +6,19 @@
     <description>Recent content in Posts on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 May 2019 14:26:25 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 May 2019 21:19:46 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>算法精进   K D树</title>
+      <link>https://argsno.github.io/post/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%BF%9B-k-d%E6%A0%91/</link>
+      <pubDate>Sun, 19 May 2019 21:19:46 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%BF%9B-k-d%E6%A0%91/</guid>
+      <description>概述 k-d树（k-dimensional树的简称），是一种分割k维数据空间的数据结构。主要应用于多维空间关键数据的搜索（如：范围搜索和最近邻</description>
+    </item>
     
     <item>
       <title>ElasticSearch 入门</title>
