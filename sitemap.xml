@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://argsno.github.io/post/elasticsearch-%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2019-05-19T14:26:25+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://argsno.github.io/post/</loc>
-    <lastmod>2019-05-11T21:02:36+08:00</lastmod>
+    <lastmod>2019-05-19T14:26:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://argsno.github.io/</loc>
-    <lastmod>2019-05-11T21:02:36+08:00</lastmod>
+    <lastmod>2019-05-19T14:26:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   

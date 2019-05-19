@@ -6,10 +6,19 @@
     <description>Recent content on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 11 May 2019 21:02:36 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 19 May 2019 14:26:25 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>ElasticSearch 入门</title>
+      <link>https://argsno.github.io/post/elasticsearch-%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Sun, 19 May 2019 14:26:25 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/elasticsearch-%E5%85%A5%E9%97%A8/</guid>
+      <description>基本概念 Node与Cluster ElasticSearch作为分布式的搜索引擎，支持多台服务器协同工作，每台服务器上也可以同时运行多个实例。</description>
+    </item>
     
     <item>
       <title>模拟直接内存溢出</title>
