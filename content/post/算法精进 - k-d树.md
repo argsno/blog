@@ -1,5 +1,5 @@
 ---
-title: "算法精进   K D树"
+title: "算法精进之 k-d树"
 date: 2019-05-19T21:19:46+08:00
 draft: false
 ---
