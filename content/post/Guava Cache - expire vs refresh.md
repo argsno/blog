@@ -4,9 +4,14 @@ date: 2019-05-22T16:08:51+08:00
 draft: true
 ---
 
-# GuavaCache的refresh和expire刷新机制
 
-Last Edited: May 22, 2019 4:05 PM
+# Cache
+
+LocalCache是Guava Cache本地缓存的实现类，可以看到LocalCache跟ConcurentHashMap有同样的继承关系。其实，在底层实现逻辑上，Cache也是借鉴了ConcurentHashMap的实现，也是将table划分为多个的Segment，提高读写的并法度，每个Segment是一个支持并发读的哈希表实现。跟ConcurentHashMap类似，不同的Segment可以支持并发的写操作。
+
+![](http://ww2.sinaimg.cn/large/006tNc79ly1g3a7dq0nphj30ja0c474f.jpg)
+
+Cache跟ConcurentHashMap主要的不同是，ConcurentHashMap当某个key不在用时，需要手动进行删除。而Cache最大的一个特点是根据配置的参数大小，可以自动过期掉其中的entry。主要的过期策略有：基于最大数量的过期，基于时间的过期，以及基于引用的过期。本文主要讨论基于时间的几个过期参数。
 
 # refresh和expire的不同点
 
