@@ -6,10 +6,19 @@
     <description>Recent content on argsno</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 19 May 2019 21:19:46 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 22 May 2019 16:08:51 +0800</lastBuildDate>
     
 	<atom:link href="https://argsno.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Guava Cache 之 Expire vs Refresh</title>
+      <link>https://argsno.github.io/post/guava-cache-expire-vs-refresh/</link>
+      <pubDate>Wed, 22 May 2019 16:08:51 +0800</pubDate>
+      
+      <guid>https://argsno.github.io/post/guava-cache-expire-vs-refresh/</guid>
+      <description>Cache LocalCache是Guava Cache本地缓存的实现类，可以看到LocalCache跟ConcurentHashMap有同样的继承关系</description>
+    </item>
     
     <item>
       <title>算法精进之 k-d树</title>

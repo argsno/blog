@@ -2,14 +2,21 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://argsno.github.io/post/guava-cache-expire-vs-refresh/</loc>
+    <lastmod>2019-05-22T16:08:51+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://argsno.github.io/post/</loc>
-    <lastmod>2019-05-19T21:19:46+08:00</lastmod>
+    <lastmod>2019-05-22T16:08:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://argsno.github.io/</loc>
-    <lastmod>2019-05-19T21:19:46+08:00</lastmod>
+    <lastmod>2019-05-22T16:08:51+08:00</lastmod>
     <priority>0</priority>
   </url>
   
