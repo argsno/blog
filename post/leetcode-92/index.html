@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>LeetCode 124 之 二叉树的最大路径和 - argsno</title>
+  <title>LeetCode 92 -- Reverse Linked List II - argsno</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -16,7 +16,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="argsno" /><meta name="description" content="124. Binary Tree Maximum Path Sum 难度：Hard 题目链接：https://leetcode.com/problems/binary-tree-maximum-pa" /><meta name="keywords" content="argsno, Java" />
+<meta name="author" content="argsno" /><meta name="description" content="难度：Medium 题目要求 1 2 3 4 5 6 7 8 Reverse a linked list from position m to n. Do it in one-pass. Note: 1 ≤ m ≤ n ≤ length of list. Example: Input: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5-&amp;gt;NULL, m = 2, n = 4 Output: 1-&amp;gt;4-&amp;gt;3-&amp;gt;2-&amp;gt;5-&amp;gt;NULL 中文说明 1 2 3 4 反转从位置 m 到" /><meta name="keywords" content="argsno, Java" />
 
 
 
@@ -26,7 +26,7 @@
 <meta name="generator" content="Hugo 0.56.0-DEV with even 4.0.0" />
 
 
-<link rel="canonical" href="https://argsno.github.io/post/leetcode-124/" />
+<link rel="canonical" href="https://argsno.github.io/post/leetcode-92/" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -38,27 +38,27 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
 
-<meta property="og:title" content="LeetCode 124 之 二叉树的最大路径和" />
-<meta property="og:description" content="124. Binary Tree Maximum Path Sum 难度：Hard 题目链接：https://leetcode.com/problems/binary-tree-maximum-pa" />
+<meta property="og:title" content="LeetCode 92 -- Reverse Linked List II" />
+<meta property="og:description" content="难度：Medium 题目要求 1 2 3 4 5 6 7 8 Reverse a linked list from position m to n. Do it in one-pass. Note: 1 ≤ m ≤ n ≤ length of list. Example: Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4 Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 中文说明 1 2 3 4 反转从位置 m 到" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://argsno.github.io/post/leetcode-124/" />
-<meta property="article:published_time" content="2019-05-22T23:14:47+08:00" />
-<meta property="article:modified_time" content="2019-05-22T23:14:47+08:00" />
+<meta property="og:url" content="https://argsno.github.io/post/leetcode-92/" />
+<meta property="article:published_time" content="2019-05-26T01:05:27+08:00" />
+<meta property="article:modified_time" content="2019-05-26T01:05:27+08:00" />
 
-<meta itemprop="name" content="LeetCode 124 之 二叉树的最大路径和">
-<meta itemprop="description" content="124. Binary Tree Maximum Path Sum 难度：Hard 题目链接：https://leetcode.com/problems/binary-tree-maximum-pa">
-
-
-<meta itemprop="datePublished" content="2019-05-22T23:14:47&#43;08:00" />
-<meta itemprop="dateModified" content="2019-05-22T23:14:47&#43;08:00" />
-<meta itemprop="wordCount" content="910">
+<meta itemprop="name" content="LeetCode 92 -- Reverse Linked List II">
+<meta itemprop="description" content="难度：Medium 题目要求 1 2 3 4 5 6 7 8 Reverse a linked list from position m to n. Do it in one-pass. Note: 1 ≤ m ≤ n ≤ length of list. Example: Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4 Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 中文说明 1 2 3 4 反转从位置 m 到">
 
 
+<meta itemprop="datePublished" content="2019-05-26T01:05:27&#43;08:00" />
+<meta itemprop="dateModified" content="2019-05-26T01:05:27&#43;08:00" />
+<meta itemprop="wordCount" content="315">
 
-<meta itemprop="keywords" content="" />
+
+
+<meta itemprop="keywords" content="LeetCode," />
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="LeetCode 124 之 二叉树的最大路径和"/>
-<meta name="twitter:description" content="124. Binary Tree Maximum Path Sum 难度：Hard 题目链接：https://leetcode.com/problems/binary-tree-maximum-pa"/>
+<meta name="twitter:title" content="LeetCode 92 -- Reverse Linked List II"/>
+<meta name="twitter:description" content="难度：Medium 题目要求 1 2 3 4 5 6 7 8 Reverse a linked list from position m to n. Do it in one-pass. Note: 1 ≤ m ≤ n ≤ length of list. Example: Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4 Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL 中文说明 1 2 3 4 反转从位置 m 到"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -121,13 +121,13 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">LeetCode 124 之 二叉树的最大路径和</h1>
+      <h1 class="post-title">LeetCode 92 -- Reverse Linked List II</h1>
 
       <div class="post-meta">
-        <span class="post-time"> 2019-05-22 </span>
+        <span class="post-time"> 2019-05-26 </span>
         
-          <span class="more-meta"> 约 910 字 </span>
-          <span class="more-meta"> 预计阅读 2 分钟 </span>
+          <span class="more-meta"> 约 315 字 </span>
+          <span class="more-meta"> 预计阅读 1 分钟 </span>
         
       </div>
     </header>
@@ -137,7 +137,12 @@
   <div class="post-toc-content always-active">
     <nav id="TableOfContents">
 <ul>
-<li><a href="#124-binary-tree-maximum-path-sum">124. Binary Tree Maximum Path Sum</a></li>
+<li>
+<ul>
+<li><a href="#题目要求">题目要求</a></li>
+<li><a href="#中文说明">中文说明</a></li>
+<li><a href="#题解">题解</a></li>
+</ul></li>
 </ul>
 </nav>
   </div>
@@ -145,83 +150,53 @@
     <div class="post-content">
       
 
-<h1 id="124-binary-tree-maximum-path-sum">124. Binary Tree Maximum Path Sum</h1>
+<p>难度：Medium</p>
 
-<p><strong>难度</strong>：Hard</p>
-
-<p><strong>题目链接</strong>：<a href="https://leetcode.com/problems/binary-tree-maximum-path-sum/">https://leetcode.com/problems/binary-tree-maximum-path-sum/</a></p>
-
-<p><strong>题目描述</strong>：</p>
+<h2 id="题目要求">题目要求</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
 </span></pre></td>
 <td class="lntd">
-<pre class="chroma">Given a non-empty binary tree, find the maximum path sum.
+<pre class="chroma">Reverse a linked list from position m to n. Do it in one-pass.
 
-For this problem, a path is defined as any sequence of nodes from some starting node to any node in the tree along the parent-child connections. The path must contain at least one node and does not need to go through the root.
+Note: 1 ≤ m ≤ n ≤ length of list.
 
-Example 1:
+Example:
 
-Input: [1,2,3]
-
-       1
-      / \
-     2   3
-
-Output: 6
-Example 2:
-
-Input: [-10,9,20,null,null,15,7]
-
-   -10
-   / \
-  9  20
-    /  \
-   15   7
-
-Output: 42</pre></td></tr></table>
+Input: 1-&gt;2-&gt;3-&gt;4-&gt;5-&gt;NULL, m = 2, n = 4
+Output: 1-&gt;4-&gt;3-&gt;2-&gt;5-&gt;NULL</pre></td></tr></table>
 </div>
 </div>
-<p><strong>思路</strong>：</p>
+<h2 id="中文说明">中文说明</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></pre></td>
+<td class="lntd">
+<pre class="chroma">反转从位置 m 到 n 的链表。请使用一趟扫描完成反转。
 
-<p>这里面有一个默认的事实，那就是不管这个路径在哪，他都肯定有一个最高的节点。我们不妨可以设这个节点为A，以A为最高节点的路径的最大长度是多少呢？</p>
+说明:
+1 ≤ m ≤ n ≤ 链表长度。</pre></td></tr></table>
+</div>
+</div>
+<h2 id="题解">题解</h2>
 
-<p>A有左右两个孩子（当然孩子可以是空），以每个孩子为起点，向下延伸，可以得到很多条单向的路径，这其中当然有一个最大路径。我们将以左孩子为起点的最大路径的值记为left_val，将以右孩子为起点的最大路径的值记为right_val，显然以A为最高点的最大路径只可能有以下四种情况：</p>
-
-<ol>
-<li>若left_val &lt; 0, 且right_val &lt; 0, 那最大路径为A节点本身：maxPathSum(A) = A.val</li>
-<li>若left_val &gt; 0, 且right_val &lt; 0, 那最大路径为A节点和以A的左孩子为起点的最大路径：maxPathSum(A) = A.val + left_val</li>
-<li>若left_val &lt; 0, 且right_val &gt; 0, 那最大路径为A节点和以A的右孩子为起点的最大路径：maxPathSum(A) = A.val + right_val</li>
-<li>若left_val &gt; 0, 且right_val &gt; 0, 那最大路径为A节点和以A的左、右孩子为起点的最大路径三者的联合：maxPathSum(A) = A.val + left_val + right_val</li>
-</ol>
-
-<p>综上，以A为最高点的最大路径是上面四种情况的最大值。那我们遍历二叉树的所有节点，求以每个节点为最高节点的最大路径的最大值即可。</p>
-
-<p><strong>代码</strong>：</p>
+<p>维护四个指针：dummy、prev、start、then
+- dummy：头节点
+- prev：指向翻转链表的前一个节点
+- start：指向翻转链表的第一个节点的位置
+- then：指向下一个准备翻转的节点</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="lnt"> 1
@@ -243,38 +218,33 @@ Output: 42</pre></td></tr></table>
 </span><span class="lnt">17
 </span><span class="lnt">18
 </span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-java" data-lang="java"><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
-    <span class="kt">int</span> <span class="n">max</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">MIN_VALUE</span><span class="o">;</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">maxPathSum</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
-        <span class="n">dp</span><span class="o">(</span><span class="n">root</span><span class="o">);</span>
-        <span class="k">return</span> <span class="n">max</span><span class="o">;</span>
-    <span class="o">}</span>
+    <span class="kd">public</span> <span class="n">ListNode</span> <span class="nf">reverseBetween</span><span class="o">(</span><span class="n">ListNode</span> <span class="n">head</span><span class="o">,</span> <span class="kt">int</span> <span class="n">m</span><span class="o">,</span> <span class="kt">int</span> <span class="n">n</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">ListNode</span> <span class="n">dummy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ListNode</span><span class="o">(</span><span class="n">0</span><span class="o">);</span>
+        <span class="n">dummy</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">head</span><span class="o">;</span>
+        <span class="n">ListNode</span> <span class="n">prev</span><span class="o">,</span> <span class="n">start</span><span class="o">,</span> <span class="n">then</span><span class="o">;</span>
+        <span class="n">prev</span> <span class="o">=</span> <span class="n">dummy</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">m</span> <span class="o">-</span> <span class="n">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="n">prev</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="n">then</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
 
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">dp</span><span class="o">(</span><span class="n">TreeNode</span> <span class="n">root</span><span class="o">)</span> <span class="o">{</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">root</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="k">return</span> <span class="n">0</span><span class="o">;</span>
-        <span class="kt">int</span> <span class="n">left</span> <span class="o">=</span> <span class="n">dp</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">left</span><span class="o">);</span>
-        <span class="kt">int</span> <span class="n">right</span> <span class="o">=</span> <span class="n">dp</span><span class="o">(</span><span class="n">root</span><span class="o">.</span><span class="na">right</span><span class="o">);</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">left</span><span class="o">);</span>
-        <span class="n">right</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">0</span><span class="o">,</span> <span class="n">right</span><span class="o">);</span>
-        <span class="c1">// 跟一般的题目不一样的是
-</span><span class="c1"></span>        <span class="c1">// 这里max的计算方式和return返回的不是一个值
-</span><span class="c1"></span>        <span class="c1">// max计算的是左右两条路径和的最大值
-</span><span class="c1"></span>        <span class="n">max</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">left</span> <span class="o">+</span> <span class="n">right</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">val</span><span class="o">,</span> <span class="n">max</span><span class="o">);</span>
-        <span class="c1">// return的是单边的路径
-</span><span class="c1"></span>        <span class="k">return</span> <span class="n">Math</span><span class="o">.</span><span class="na">max</span><span class="o">(</span><span class="n">left</span><span class="o">,</span> <span class="n">right</span><span class="o">)</span> <span class="o">+</span> <span class="n">root</span><span class="o">.</span><span class="na">val</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span> <span class="o">-</span> <span class="n">m</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="n">start</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">then</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">then</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">prev</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+            <span class="n">prev</span><span class="o">.</span><span class="na">next</span> <span class="o">=</span> <span class="n">then</span><span class="o">;</span>
+            <span class="n">then</span> <span class="o">=</span> <span class="n">start</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">dummy</span><span class="o">.</span><span class="na">next</span><span class="o">;</span>
     <span class="o">}</span>
 <span class="o">}</span></code></pre></td></tr></table>
 </div>
 </div>
-<p><strong>时间复杂度</strong>：$O(n)$</p>
-
-<p><strong>空间复杂度</strong>：$O(\log n)$</p>
-
-<p>思路参考自：<a href="https://blog.csdn.net/guoziqing506/article/details/51745846">二叉树中的最大路径和</a></p>
+<ul>
+<li>时间复杂度：O(N)</li>
+<li>空间复杂度：O(1)</li>
+</ul>
 
     </div>
 
@@ -286,7 +256,7 @@ Output: 42</pre></td></tr></table>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-        2019-05-22
+        2019-05-26
         
     </span>
   </p>
@@ -294,15 +264,13 @@ Output: 42</pre></td></tr></table>
   
 </div>
 <footer class="post-footer">
-      
+      <div class="post-tags">
+          <a href="/tags/leetcode/">LeetCode</a>
+          </div>
       <nav class="post-nav">
-        <a class="prev" href="/post/leetcode-206/">
-            <i class="iconfont icon-left"></i>
-            <span class="prev-text nav-default">LeetCode 206 -- Reverse Linked List</span>
-            <span class="prev-text nav-mobile">上一篇</span>
-          </a>
-        <a class="next" href="/post/guava-cache-expire-vs-refresh/">
-            <span class="next-text nav-default">Guava Cache 之 Expire vs Refresh</span>
+        
+        <a class="next" href="/post/leetcode-206/">
+            <span class="next-text nav-default">LeetCode 206 -- Reverse Linked List</span>
             <span class="next-text nav-mobile">下一篇</span>
             <i class="iconfont icon-right"></i>
           </a>
